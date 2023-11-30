@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --Black: #1a1a1a;
+    --White: #cccccc;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    overflow: hidden;
+    background-color: var(--White);
+    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+
+    & .text_button {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 25vmin;
+        font-weight: 900;
+        filter: drop-shadow(0 0 0.75rem rgb(120, 120, 120));
+        cursor: pointer;
+    }
+
+    & .button-White {
+        background-color: var(--White);
+    }
+
+    & .button-Black {
+        background-color: var(--Black);
+    }
+
+    & .button-Black,
+    .button-White {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all .5s ease-in;
+        border: none;
+        display: none;
+        filter: drop-shadow(0 0 0.75rem rgb(120, 120, 120));
+        transition: all .4s ease;
+    }
+
+    & .button-Black:hover,
+    .button-White:hover {
+        transform: scale(1.2);
+    }
+}
