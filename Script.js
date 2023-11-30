@@ -3,7 +3,6 @@ const ButtonBlack = document.getElementById('ButtonBlack');
 const ButtonWhite = document.getElementById('ButtonWhite');
 const TextButton = document.getElementById('TextButton');
 
-
 ButtonBlack.addEventListener('click', () => {
     Container.style.backgroundColor = '#1a1a1a';
     ButtonWhite.style.display = 'block';
