@@ -33,16 +33,16 @@
         cursor: pointer;
     }
 
-    & .button-white {
+    & .Button-White {
         background-color: var(--White);
     }
 
-    & .button-black {
+    & .Button-Black {
         background-color: var(--Black);
     }
 
-    & .button-black,
-    .button-white {
+    & .Button-Black,
+    .Button-White {
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -54,8 +54,8 @@
         transition: all .4s ease;
     }
 
-    & .button-black:hover,
-    .button-white:hover {
+    & .Button-Black:hover,
+    .Button-White:hover {
         transform: scale(1.2);
     }
 }
