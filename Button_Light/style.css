@@ -20,7 +20,6 @@
     place-items: center;
     overflow: hidden;
     background-color: var(--White);
-    background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
 
     & .text-button {
         position: absolute;
