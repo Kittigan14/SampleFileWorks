@@ -1,0 +1,42 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    position: relative;
+
+    & .toggle {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 75px;
+        height: 40px;
+        background-color: #1a1a1a;
+        position: absolute;
+        right: 0;
+        border-radius: 20px;
+        outline: none;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+    }
+
+    & .toggle:after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #cccccc;
+        top: 5px;
+        left: 5px;
+        border-radius: 50%;
+    }
+}
+
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #cccccc;
+}
