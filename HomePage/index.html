@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <title>Home Page</title>
 </head>
 <body>
     <div class="container">
-        <div class="nav-bar">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Product</li>
-                <li>Contact</li>
-            </ul>
-        </div>
-
-        <div class="contents">
-            
+        <video autoplay muted loop id="myVideo" class="my-Video">
+            <source src="./Videos/sunset.mp4" type="video/mp4">
+          </video>
+        <div class="content" id="myContent">
+            <button onclick="myFunction()" class="myBtn" id="myBtn">Dark</button>
         </div>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
