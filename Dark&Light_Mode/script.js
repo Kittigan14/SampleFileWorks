@@ -1,3 +1,7 @@
-document.getElementById('toggle').addEventListener('click', function() {
-    document.getElementsByTagName('body')[0].classList.toggle("dark-theme");
-})
+function myFunction() {
+    let element = document.getElementById('container');
+    let btn = document.getElementById('myBtn');
+    element.classList.toggle("dark-mode");
+    if (btn.innerHTML == 'Dark') btn.innerHTML = ('Light');
+    else btn.innerHTML = ('Dark');
+ }
