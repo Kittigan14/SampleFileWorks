@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return false;
     }
 
-    // Initialize Dark Mode toggle based on cookie
     const darkModeState = getDarkModeState();
     setDarkModeState(darkModeState);
 
