@@ -46,3 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// let slidespan1 = document.getElementById('.slider-span1')
+// let slidespan2 = document.getElementById('.slider-span2')
+// let slidespan3 = document.getElementById('.slider-span3')
+
+// slidespan1,slidespan2,slidespan3.addEventListener('click' , () => {
+//     slidespan1.style.transform = ('scale(1.3)');
+//     slidespan2.style.transform = ('scale(1.3)');
+//     slidespan3.style.transform = ('scale(1.3)');
+//     slidespan1.style.background = ('transparent');
+//     slidespan2.style.background = ('transparent');
+//     slidespan3.style.background = ('transparent');
+//     slidespan1.style.backdropFilter = ('blur(0)');
+//     slidespan2.style.backdropFilter = ('blur(0)');
+//     slidespan3.style.backdropFilter = ('blur(0)');
+// })

@@ -37,6 +37,7 @@ html {
         position: absolute;
         display: flex;
         justify-content: center;
+        align-items: center;
         top: 0;
         overflow: hidden;
         background: var(--bg--blue);
@@ -47,12 +48,11 @@ html {
         float: left;
         color: var(--bg--white);
         text-align: center;
-        padding: 20px 16px;
+        padding: 20px 10px;
         text-decoration: none;
         font-size: 20px;
         font-weight: 700;
         transition: all .4s ease-in-out;
-
         text-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     }
 
@@ -61,18 +61,17 @@ html {
     }
 
     & #textmode {
-        position: absolute;
-        right: 6%;
-        margin: 0 25px;
+        /* margin: 0 0 0 50px; */
+        /* order: 1 */
     }
 
     & .toggle {
-        position: absolute;
+        position: sticky;
         right: 0;
         display: inline-block;
         width: 60px;
         height: 34px;
-        margin: 17px;
+        margin: 17px 10px;
     }
 
     & .toggle input {
@@ -161,6 +160,11 @@ html {
             }
         }
     }
+
+    .slider-span {
+        width: 850px;
+        height: 850px;
+    }
 }
 
 
@@ -175,9 +179,34 @@ html {
     backdrop-filter: blur(0);
 }
 
+.section1,
+.section2,
+.section3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--bg--white);
+
+    & .section1-content {
+        width: calc(100% - 150px);
+        height: 650px;
+        background: var(--bg--gray);
+        border-radius: 24px;
+    }
+}
+
 .dark-mode {
-    .container {
+
+    .container,
+    .section1,
+    .section2,
+    .section3 {
         background: var(--bg--dark);
+    }
+
+    .section1-content {
+        background: var(--bg--white);
     }
 
     .navbar {
@@ -196,15 +225,21 @@ html {
 
     .navbar {
         flex-direction: column;
+        background: var(--bg--gray);
     }
 
-    .navbar a {
-        padding: 10px;
+    & .navbar a {
         font-size: 16px;
+        padding: 20px 8px;
+    }
+
+    & .toggle {
+        margin: 17px 8px;
     }
 
     .slide-container {
-        margin-top: 13rem;
+        width: 100%;
+        margin-top: 30rem;
     }
 
     .img,
