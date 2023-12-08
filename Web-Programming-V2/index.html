@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+    <script src="./SlideImages.js"></script>
+    <title>Home Page</title>
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a id="slideitem-1" href="#container">หน้าแรก</a>
+        <a id="slideitem-2" href="#section1">สถานที่ท่องเที่ยว</a>
+        <a id="slideitem-3" href="#section2">ประวัติ</a>
+        <a id="slideitem-4" href="#section3">ติดต่อ</a>
+    </div>
+
+    <div class="navbar">
+        <a href="#container" class="nav-item1" id="navitem-1">หน้าแรก</a>
+        <a href="#section1" class="nav-item2" id="navitem-2">สถานที่ท่องเที่ยว</a>
+        <a href="#section2" class="nav-item3" id="navitem-3">ประวัติ</a>
+        <a href="#section3" class="nav-item4" id="navitem-4">ติดต่อ</a>
+        <a href="#" class="nav-item5">icon</a>
+        <a href="#" id="textmode" class="textmode">Text Mode</a>
+        <label class="toggle">
+            <input type="checkbox" id="modeToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="menu" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+
+    <div class="container" id="container">
+
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="./Images/ดินแดนหิ่งห้อย.png" class="slide-images" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="./Images/น้ำตกตาดหินยาว.png" class="slide-images" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="./Images/อ่างเก็บน้ำ เขาอีโต้.png" class="slide-images" style="width:100%">
+            </div>
+        </div>
+
+        <div class="container-content">
+            <span class="content-text">10 ที่เที่ยวจังหวัดปราจีนบุรี</span>
+            <p>ที่เราได้รวบรวมมาในวันนี้คัดมา โดยเน้นที่จุดที่มีมุมถ่ายรูปสวยๆแบบจัดเต็ม</p>
+        </div>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+
+    <div class="section1" id="section1">
+        <div class="section1-content">
+            
+        </div>
+    </div>
+
+    <div class="section2" id="section2">
+        <div class="section2-content">
+
+        </div>
+    </div>
+
+    <div class="section3" id="section3">
+        <div class="section3-content">
+
+        </div>
+    </div>
+</body>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000);
+    }
+</script>
+
+</html>
