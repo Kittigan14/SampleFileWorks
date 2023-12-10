@@ -20,12 +20,15 @@ function findPos(pos) {
         if (position === 'N') {
             data.splice(datamove, 1);
             data[datamove -= 7] = 'user';
+
         } else if (position === 'E') {
             data.splice(datamove, 1);
             data[datamove += 1] = 'user';
+
         } else if (position === 'W') {
             data.splice(datamove, 1);
             data[datamove -= 1] = 'user';
+
         } else if (position === 'S') {
             data.splice(datamove, 1);
             data[datamove += 7] = 'user';

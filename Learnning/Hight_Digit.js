@@ -1,21 +1,12 @@
-highestDigit(379)
-highestDigit(2)
-highestDigit(377401)
+console.log(highestDigit(8397))
+console.log(highestDigit(2))
+console.log(highestDigit(397401))
 
 function highestDigit(data) {
-    let max = []
-    let result = 0;
-
-    for (let num of data.toString()) {
-        for (let n of num) {
-            max.push(n)
-        }
-    }
-    for (let i = 1; i < max.length + true; i += true){
-        if (max.length == 1) result = max[0]
-        else if (max[i] > max[i - 1]) result = max[i]        
-    }
-    console.log(result)
+    let max = [];
+    for (let num of data.toString()) for (let n of num) max += n;
+    let maxvalue = max[0];
+    for (let value of max) value > maxvalue ? maxvalue = value : 0; return(maxvalue);
 }
 
 // highestDigit(379)
