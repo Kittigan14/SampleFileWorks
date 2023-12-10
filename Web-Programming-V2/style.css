@@ -266,6 +266,7 @@ html {
     justify-content: center;
     background: var(--bg--blue);
     transition: all .4s ease;
+    margin-top: 5rem;
 
     & .section-row {
         display: grid;
