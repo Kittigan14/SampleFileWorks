@@ -259,12 +259,12 @@ html {
     align-items: center;
     height: 100vh;
     background: var(--bg--white);
+    position: relative;
 }
-
 
 .section1-content {
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
