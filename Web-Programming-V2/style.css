@@ -251,62 +251,60 @@ html {
 .section1,
 .section2,
 .section3 {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: var(--bg--white);
-    position: relative;
 }
 
 .section1-content {
     width: 100%;
-    /* height: 65vh; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background: var(--bg--blue);
     transition: all .4s ease;
-}
 
-.section-row {
-    display: grid;
-    grid-template-columns: repaest(auto-fit,
-            minmax(min(11.25rem, 40vh), 1fr));
-    grid-gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin: 30px 20px;
-}
+    & .section-row {
+        display: grid;
+        grid-template-columns: repaest(auto-fit,
+                minmax(min(11.25rem, 40vh), 1fr));
+        grid-gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 40px;
+    }
+    & .section-images {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 50px;
+        
+        & .image-overlay {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: all .4s ease;
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        }
 
-.section-images {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 50px;
-}
-
-.image-overlay {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: all .4s ease;
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-}
-
-.overlay {
-    position: absolute;
-    bottom: 0;
-    color: #f1f1f1;
-    width: 100%;
-    transition: all .3s linear;
-    color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 24px;
-    cursor: pointer;
+        & .overlay {
+            position: absolute;
+            bottom: 0;
+            color: var(--bg--white);
+            width: 100%;
+            transition: all .3s linear;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+    }
 }
 
 .section-images:hover .overlay {
@@ -365,20 +363,18 @@ html {
     border-bottom-left-radius: 24px;
 }
 
-/* .section3-content {
+.googlemap {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50vh;
-    background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
-    border-top-right-radius: 24px;
-    border-top-left-radius: 24px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 22px 70px 4px;
-    transition: all 1s ease-in-out;
-} */
+    width: 650px;
+    top: 13%;
+}
+
+.map-title {
+    font-size: 25px;
+    font-weight: 600;
+    margin: 10px;
+    transition: all .5s ease;
+}
 
 .wrapper {
     display: flex;
@@ -386,9 +382,12 @@ html {
     align-items: center;
     list-style: none;
     width: 100%;
-    height: 60vh;
-    margin-top: 40vh;
+    height: 20vh;
+    margin-top: 80vh;
     background: var(--bg--blue);
+    transition: all .5s ease;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
 }
 
 .wrapper .icon {
@@ -399,7 +398,7 @@ html {
     padding: 15px;
     width: 50px;
     height: 50px;
-    margin: 0 30px;
+    margin: 0 50px;
     transition: all .4s ease;
 }
 
@@ -410,7 +409,10 @@ html {
     opacity: 0;
     pointer-events: none;
     transition: all .4s ease;
-    border: 1px solid black;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    width: 100px;
 }
 
 .wrapper .tooltip::before {
@@ -423,7 +425,7 @@ html {
 }
 
 .wrapper .icon:hover .tooltip {
-    top: -45px;
+    top: -25px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -476,6 +478,14 @@ html {
     .section3-content {
         background: var(--bg--gray);
     }
+
+    .wrapper {
+        background: var(--bg--gray);
+    }
+
+    .map-title {
+        color: var(--bg--white);
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -518,8 +528,8 @@ html {
     }
 
     .overlay {
-        width: 200px;
-        left: 30px;
+        width: 250px;
+        left: 80px;
     }
 }
 
