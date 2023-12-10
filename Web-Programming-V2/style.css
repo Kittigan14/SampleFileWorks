@@ -33,6 +33,7 @@ html {
     overflow: hidden;
     background: var(--bg--blue);
     z-index: 1;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 
     & a:hover {
         color: var(--bg--white);
@@ -142,6 +143,7 @@ html {
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
     }
 
     & .slide-images {
@@ -210,12 +212,6 @@ html {
     }
 }
 
-/* .logo {
-    position: absolute;
-    left: 30px;
-    margin-top: 10px;
-} */
-
 .sidenav {
     height: 100%;
     width: 0;
@@ -227,6 +223,7 @@ html {
     overflow-x: hidden;
     transition: all .4s linear;
     padding-top: 60px;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 
 .sidenav a {
@@ -284,7 +281,6 @@ html {
     width: 100%;
     max-width: 300px;
     margin: 0 50px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .image-overlay {
@@ -294,6 +290,7 @@ html {
     object-fit: cover;
     border-radius: 8px;
     transition: all .4s ease;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
 .overlay {
@@ -301,7 +298,7 @@ html {
     bottom: 0;
     color: #f1f1f1;
     width: 100%;
-    transition: .5s ease;
+    transition: all .4s ease;
     opacity: 0;
     color: white;
     font-size: 20px;
@@ -317,6 +314,54 @@ html {
 
 .image-overlay:hover {
     transform: scale(1.1);
+}
+
+.section2-content h1{
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-weight: 600;
+    transition: all .5s ease;
+    margin: 2rem;
+}
+
+.content-text {
+    width: 30rem;
+    height: 500px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.content-text p {
+    transition: all .5s ease;
+}
+
+.section2-photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section2-photo-second {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.section2-photo img {
+    width: 300px;
+    height: 100vh;
+    object-fit: cover;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+}
+
+.section2-photo-second img {
+    width: 300px;
+    height: 100vh;
+    object-fit: cover;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
 }
 
 .dark-mode {
@@ -356,6 +401,10 @@ html {
     }
 
     .sidenav a:hover {
+        color: var(--bg--white);
+    }
+
+    .section2-content h1 {
         color: var(--bg--white);
     }
 }

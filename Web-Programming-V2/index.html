@@ -19,14 +19,14 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a id="slideitem-1" href="#container">หน้าแรก</a>
         <a id="slideitem-2" href="#section1">สถานที่ท่องเที่ยว</a>
-        <a id="slideitem-3" href="#section2">ประวัติ</a>
+        <a id="slideitem-3" href="#section2">แนะนำ</a>
         <a id="slideitem-4" href="#section3">ติดต่อ</a>
     </div>
 
     <div class="navbar">
         <a href="#container" class="nav-item1" id="navitem-1">หน้าแรก</a>
         <a href="#section1" class="nav-item2" id="navitem-2">สถานที่ท่องเที่ยว</a>
-        <a href="#section2" class="nav-item3" id="navitem-3">ประวัติ</a>
+        <a href="#section2" class="nav-item3" id="navitem-3">แนะนำ</a>
         <a href="#section3" class="nav-item4" id="navitem-4">ติดต่อ</a>
         <a href="#" class="nav-item5">icon</a>
         <a href="#" id="textmode" class="textmode">Text Mode</a>
@@ -95,13 +95,40 @@
                     <div class="overlay">ดินแดนหิ่งห้อย</div>
                 </div>
             </div>
-            <!-- Add more rows as needed -->
         </div>
     </div>
 
     <div class="section2" id="section2">
         <div class="section2-content">
+            <center>
+                <h1>แนะนำ</h1>
+            </center>
+            <div class="content-text">
+                <p>
+                    เมื่อคุณเข้าสู่เส้นทางเข้าสู่ปราจีนบุรี
+                    คุณกำลังจะก้าวเข้าสู่โลกของความงดงามทางธรรมชาติและวัฒนธรรมที่หลากหลาย.
+                    ที่นี่ คุณจะได้พบกับทัศนียภาพที่มีความสวยงามอันน่าอัศจรรย์
+                    ประสบการณ์ทางวัฒนธรรมที่น่าทึ่ง และการผจญภัยที่ไม่จำกัดขอบ.
+                    <br><br><br>
+                    ช่วงเวลาที่คุณเดินทางปราจีนบุรีวันนี้ คุณจะได้พบกับ
+                    เดินทางผ่านทุ่งนาสีเขียวเต็มไปด้วยลมหอน
+                    น้ำตกที่ประทับใจ ที่นี่น้ำไหลตกลงมาเสมอกันอย่างสวยงาม
+                    บรรยากาศสุดอบอุ่นของหมู่บ้านโบราณที่เก่าแก่
+                    สานต่อวัฒนธรรมท้องถิ่นผ่านศิลปะและขนบธรรมเนียมประเพณี
+                    ความอร่อยจากร้านอาหารท้องถิ่นที่นี่
+                    อย่ารอช้า! พบกับปราจีนบุรีที่คุณไม่เคยรู้จักมาก่อน และประทับใจทุกช่วงเวลาที่คุณอยู่ที่นี่.
+                    <br> <br>
+                    ขอบคุณที่มอบโอกาสในการตื่นตาตื่นใจ
+                </p>
+            </div>
 
+            <div class="section2-photo">
+                <img src="./Images/img-gallery/left-bar.jpg" alt="">
+            </div>
+
+            <div class="section2-photo-second">
+                <img src="./Images/img-gallery/right-bar.jpg" alt="">
+            </div>
         </div>
     </div>
 
@@ -131,7 +158,7 @@
         }
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000);
+        setTimeout(showSlides, 4000);
     }
 </script>
 
