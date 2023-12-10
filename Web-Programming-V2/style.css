@@ -473,6 +473,11 @@ html {
     .section2-photo-second img {
         display: none;
     }
+
+    .overlay {
+        width: 200px;
+        left: 30px;
+    }
 }
 
 @media screen and (max-width: 1070px) {
