@@ -59,7 +59,7 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
     setElementOpacity(["slideitem-1", "slideitem-2", "slideitem-3", "slideitem-4"], "1");
     setElementOpacity(["navitem-1", "navitem-2", "navitem-3", "navitem-4"], "0");
-    
+
 }
 
 function closeNav() {
@@ -67,3 +67,39 @@ function closeNav() {
     setElementOpacity(["slideitem-1", "slideitem-2", "slideitem-3", "slideitem-4"], "0");
     setElementOpacity(["navitem-1", "navitem-2", "navitem-3", "navitem-4"], "1");
 }
+
+// Section Info
+function openModal(imgSrc, altText) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img-info");
+    var captionText = document.getElementById("caption");
+
+    modal.style.display = "block";
+    modalImg.src = imgSrc;
+    captionText.innerHTML = altText;
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+function attachClickEventToImages() {
+    var images = document.getElementsByClassName("gallery-sec1");
+
+    for (var i = 0; i < images.length; i++) {
+        images[i].onclick = function () {
+            openModal(this.src, this.alt);
+        };
+    }
+}
+
+function attachClickEventToCloseButton() {
+    var span = document.getElementsByClassName("info-close")[0];
+    span.onclick = closeModal;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    attachClickEventToImages();
+    attachClickEventToCloseButton();
+});

@@ -39,10 +39,6 @@ html {
         color: var(--bg--white);
     }
 
-    & .nav-item5 {
-        opacity: 0;
-    }
-
     & .menu {
         color: var(--bg--dark);
         position: absolute;
@@ -273,74 +269,160 @@ html {
     justify-content: center;
     background: var(--bg--blue);
     transition: all .4s ease;
-    margin-top: 5rem;
-
-    & .gallery {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 20px auto;
-    }
-
-    & .gallery img {
-        width: 300px;
-        height: 200px;
-        border-radius: 8px;
-        margin: 25px 40px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    & .gallery-row {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    
-        & .gallery-sec1 {
-            transition: all .4s ease;
-        }
-    }
-
-    & .overlay {
-        position: absolute;
-        bottom: 10px;
-        color: var(--bg--white);
-        width: 100%;
-        transition: all .3s linear;
-        color: white;
-        font-size: 20px;
-        padding: 20px;
-        text-align: center;
-        border-radius: 24px;
-        cursor: pointer;
-    }
+    margin-top: 3rem;
 }
 
-.gallery-row:hover .overlay,
-.gallery-sec1:hover {
+.info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: 30px;
+}
+
+.info-img {
+    width: 320px;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    filter: blur(.9px);
+    transition: all .4s ease;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-img:hover {
+    transform: scale(1.08);
+    filter: blur(0);
+}
+
+.infomation {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.info-popup {
+    width: 180px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: -6rem;
+    background: var(--bg--negroni);
+    color: var(--bg--dark);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    transition: all .5s ease;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.info:hover .info-popup {
+    opacity: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    height: auto;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    font-size: 25px;
+    text-align: center;
+    color: var(--bg--white);
+    padding: 60px 0;
+    height: auto;
+}
+
+.modal-content,
+#caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    border-radius: 18px;
+}
+
+.modal-content {
+    transition: transform .2s;
+    margin: 0 auto;
+}
+
+.modal-content:hover {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-.section2-content h1 {
-    font-family: 'IBM Plex Sans Thai', sans-serif;
-    font-weight: 600;
-    transition: all .5s ease;
-    margin: 2rem;
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
 }
 
-.content-text {
-    width: 30rem;
-    height: 500px;
-    font-size: 20px;
-    font-weight: 600;
+.info-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: all .4s ease;
+}
+
+.info-close:hover,
+.info-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.recommend {
     margin: 5px;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: justify;
 }
 
-.content-text p {
+.recommend p {
     transition: all .5s ease;
+    margin-bottom: 15px;
+}
+
+.recommend p span {
+    display: block;
+    text-indent: 1.2rem;
 }
 
 .section2-photo {
@@ -356,32 +438,27 @@ html {
 }
 
 .section2-photo img {
-    width: 300px;
+    width: 250px;
     height: 100vh;
     object-fit: cover;
-    border-top-right-radius: 24px;
-    border-bottom-right-radius: 24px;
-    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
 }
 
 .section2-photo-second img {
     width: 300px;
     height: 100vh;
     object-fit: cover;
-    border-top-left-radius: 24px;
-    border-bottom-left-radius: 24px;
 }
 
 .googlemap {
     position: absolute;
     width: 650px;
-    top: 15%;
+    top: 7%;
 }
 
 .map-title {
     font-size: 30px;
     font-weight: 600;
-    margin: 40px;
+    margin: 30px;
     transition: all .5s ease;
 }
 
@@ -391,8 +468,8 @@ html {
     align-items: center;
     list-style: none;
     width: 100%;
-    height: 10vh;
-    margin-top: 90vh;
+    height: 20vh;
+    margin-top: 80vh;
     background: var(--bg--blue);
     transition: all .5s ease;
     border-top-right-radius: 18px;
@@ -405,9 +482,7 @@ html {
     justify-content: center;
     border-radius: 50%;
     padding: 15px;
-    width: 50px;
-    height: 50px;
-    margin: 0 50px;
+    margin: 0 30px;
     transition: all .4s ease;
 }
 
@@ -434,11 +509,12 @@ html {
 }
 
 .wrapper .icon:hover .tooltip {
-    top: -17px;
+    top: -30px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
+
 
 .dark-mode {
 
@@ -454,7 +530,7 @@ html {
     }
 
     .navbar {
-        background: #515A5A ;
+        background: #515A5A;
     }
 
     .navbar a,
@@ -480,7 +556,7 @@ html {
         color: var(--bg--white);
     }
 
-    .section2-content h1 {
+    .section2-content {
         color: var(--bg--white);
     }
 
@@ -493,6 +569,11 @@ html {
     }
 
     .map-title {
+        color: var(--bg--white);
+    }
+
+    .info-popup {
+        background: #515A5A;
         color: var(--bg--white);
     }
 }
@@ -539,6 +620,12 @@ html {
     .overlay {
         width: 250px;
         left: 80px;
+    }
+
+    .info-img {
+        width: 100%;
+        max-width: none;
+        height: auto;
     }
 }
 
