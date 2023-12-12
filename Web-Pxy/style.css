@@ -1,37 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 
-:root {
-  --black: #1a1a1a;
-  --white: #cccccc;
+html {
+  scroll-behavior: smooth;
 }
 
 .navbar {
+  display: flex;
+  justify-content: center;
   overflow: hidden;
+  background-color: #f0e057;
 }
 
 .navbar a {
   float: left;
   display: block;
-  color: var(--black);
+  color: #1a1a1a;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.navbar a:hover {
-  color: black;
-}
-
-.navbar a.active {
-  background-color: var(--black);
-  color: white;
+  font-size: 30px;
+  transition: all .4s ease;
 }
 
 .navbar .icon {
@@ -39,27 +34,99 @@
 }
 
 .container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container-content {
+  width: 670px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.mySlides {
+  width: auto;
+  height: 450px;
+  margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100vh;
-  border: 1px solid red;
-
-  & .mySlides {
-    width: 100%;
-    height: 450px;
-    border: 1px solid blue;
-  }
-
-  & .title-container {}
+  overflow: hidden;
+  transform: scale(1);
 }
 
 .section2 {
   width: 100%;
   height: 100vh;
-  border: 1px solid black;
+  background: #f0e057;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
+
+.title {
+  position: absolute;
+  font-size: 45px;
+  top: 15%;
+}
+
+.image-section img {
+  width: 500px;
+  height: 300px;
+  margin: 0 50px;
+  border-radius: 20px;
+  transition: all .4s ease;
+  position: relative;
+}
+
+.image-section img:hover {
+  transform: scale(1.1)
+}
+
+.title-image-1{
+  position: absolute;
+  width: auto;
+  text-align: center;
+  margin: 30px;
+  margin-left: 14rem;
+  transition: all .4s ease;
+  opacity: 0;
+  font-size: 20px;
+}
+
+.title-image-2 {
+  position: absolute;
+  width: auto;
+  text-align: center;
+  margin: 30px;
+  margin-left: 11rem;
+  transition: all .4s ease;
+  opacity: 0;
+  font-size: 20px;
+}
+
+.image-section:hover .title-image-1,
+.image-section:hover .title-image-2 {
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {
