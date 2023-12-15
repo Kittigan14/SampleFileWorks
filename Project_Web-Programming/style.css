@@ -26,6 +26,7 @@ html {
   font-weight: 600;
   background: transparent;
   backdrop-filter: blur(10px);
+  z-index: 999;
 
   & .nav-menu {
     display: flex;
@@ -73,7 +74,7 @@ html {
   align-items: center;
 
   & .box-content {
-    width: 70%;
+    width: 65%;
     height: 480px;
     display: flex;
     justify-content: space-between;
@@ -91,7 +92,7 @@ html {
       width: 2400px;
       height: 480px;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       overflow: hidden;
     }
