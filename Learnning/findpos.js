@@ -35,13 +35,14 @@ function findPos(pos) {
         }
     }
 
-    if (pos.some(direction => ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'T', 'U', 'V', 'X', 'Y', 'Z'].includes(direction))) {
-        console.log('GAME OVER!, YOU FOUL!!!');
-    } else if (data[13] == 'user') {
-        console.log('Last Position : TG1 , You WIN!');
-    } else if (data[14] == 'user') {
-        console.log('Last Position : TG2 , You WIN!');
-    } else {
-        console.log('Last Position : ' + datamove + ' You LOSE :(');
-    }
+    if (pos.some(direction => [
+            'A', 'B', 'C', 'D', 'F',
+            'G', 'H', 'I', 'J', 'K',
+            'L', 'M', 'O', 'P', 'Q',
+            'R', 'T', 'U', 'V', 'X',
+            'Y', 'Z'
+        ].includes(direction))) console.log('GAME OVER!, YOU FOUL!!!');
+    else if (data[13] == 'user') console.log('Last Position : TG1 , You WIN!');
+    else if (data[14] == 'user') console.log('Last Position : TG2 , You WIN!');
+    else console.log(`Last Position : ${datamove}  , You LOSE! :()`);
 }
