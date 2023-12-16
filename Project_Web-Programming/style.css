@@ -82,17 +82,23 @@ html {
     border-radius: 24px;
     overflow: hidden;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: relative;
 
     & .box-title {
-      text-align: left;
-      padding: 10rem;
+      width: 500px;
+      height: 480px;
+      position: absolute;
+      right: 0;
+      padding: 5rem;
     }
 
     & .box-img {
-      width: 2400px;
+      width: 500px;
       height: 480px;
+      position: absolute;
+      left: 0;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       overflow: hidden;
     }
