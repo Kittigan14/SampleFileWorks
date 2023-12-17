@@ -11,4 +11,5 @@ function codeineshop(value) {
 
     if (value > 150 && value < 200) console.log(`Change : ${value - 150}`);
     else if ( value > 200) console.log(`Change : ${value - 200}`) 
+    console.log("-------------");
 }
