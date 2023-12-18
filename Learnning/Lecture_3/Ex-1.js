@@ -9,4 +9,4 @@ for (let index = 0; index < NewValues.length; index += true) {
         if (NewValues[index] == NewValues[inner] && index < inner) result += NewValues[index] + ' '; 
     }
 }
-console.log(`Values is : ${result}`)
+console.log(`Result : ${result}`)
