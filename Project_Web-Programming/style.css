@@ -24,19 +24,18 @@ html {
   color: #1a1a1a;
   font-size: 18px;
   font-weight: 600;
-  background: transparent;
-  backdrop-filter: blur(10px);
+  background: #ffffffee;
   z-index: 999;
 
   & .nav-menu {
     display: flex;
 
     & li {
-      margin: 0 1rem;
+      margin: 0 2rem;
 
       & a {
         color: #1a1a1a;
-        transition: all .3s ease;
+        transition: all .4s ease;
       }
     }
   }
@@ -73,6 +72,64 @@ html {
   justify-content: center;
   align-items: center;
 
+  & .hero-banner {
+    width: 100%;
+    height: 100vh;
+    background-image: url(./Images/เขาทุ่ง.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .banner-title {
+    text-align: center;
+    padding: 10px;
+
+    & h1 {
+      text-transform: uppercase;
+      font-size: 40px;
+      color: #ffffffc8;
+    }
+
+    & p {
+      font-size: 20px;
+      color: #cccccc;
+    }
+  }
+
+  & .banner-button {
+    width: 130px;
+    height: 50px;
+    margin: 20px 0;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    border-radius: 12px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: all .4s ease;
+  }
+
+  & .banner-button:hover {
+    background: #ffffff9a;
+    color: #1a1a1a;
+  }
+}
+
+.second-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
   & .box-content {
     width: 65%;
     height: 480px;
@@ -85,18 +142,19 @@ html {
     position: relative;
 
     & .box-title {
-      width: 500px;
+      width: 100%;
       height: 480px;
-      position: absolute;
-      right: 0;
-      padding: 5rem;
+      padding: 3rem;
+      text-align: left;
+
+      & p {
+        font-size: 18px;
+      }
     }
 
     & .box-img {
-      width: 500px;
+      width: 85%;
       height: 480px;
-      position: absolute;
-      left: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -108,33 +166,65 @@ html {
     }
 
     & .box-img:hover img {
-      transform: scale(1.1);
-    }
-
-    & .box-button {
-      width: 150px;
-      height: 60px;
-      margin: 20px 0;
-      font-size: 18px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #1a1a1a;
-      border-radius: 12px;
-      color: #cccccc;
-      cursor: pointer;
-
-      & p {
-        transition: all .4s ease;
-      }
-    }
-
-    & .box-button:hover p {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
   }
 }
 
-.second-section {
+.third-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  & .card {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3rem;
+
+    & .card-content {
+      width: 350px;
+      height: 250px;
+      background: #1a1a1a;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      margin: 20px 20px;
+
+      & .card-img {
+        width: 350px;
+        height: 250px;
+      }
+
+      & .card-img img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        object-position: top center;
+        transition: all .4s ease;
+      }
+
+      & .card-img:hover img {
+        transform: scale(1.1);
+      }
+
+      & .card-title {
+        position: absolute;
+        bottom: 5px;
+        width: 350px;
+        height: auto;
+        color: #ffffffb8;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.fourth-section {
   height: 100vh;
 }
