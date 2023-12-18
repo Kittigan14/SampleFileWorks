@@ -16,3 +16,11 @@ for (let index = 0; index < names.length; index++) {
 
 console.log('-- for of --');
 for (let name of names) console.log(name);
+
+
+console.log('-- Do while loop --');
+let i = 0;
+do {
+    console.log(names[i])
+    i++;
+} while (i < names.length);
