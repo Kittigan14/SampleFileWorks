@@ -2,11 +2,11 @@ let values1 = ['Apple' , 1 , false];
 let values2 = ['Fries' , 2 , true];
 let values3 = ['Mars' , 9 , 'Apple'];
 
-let NewValues = values1.concat(values2 , values3);
+let ConcatValues = values1.concat(values2 , values3);
 let result = '';
-for (let index = 0; index < NewValues.length; index += true) {
-    for (let inner = 1; inner < NewValues.length; inner += true) {
-        if (NewValues[index] == NewValues[inner] && index < inner) result += NewValues[index] + ' '; 
+for (let i = 0; i < ConcatValues.length; i += true) {
+    for (let n = 1; n < ConcatValues.length; n += true) {
+        if (ConcatValues[i] == ConcatValues[n] && i < n) result += ConcatValues[i] + ' ';
     }
 }
-console.log(`Result : ${result}`)
+console.log(`Values : ${result}`)
