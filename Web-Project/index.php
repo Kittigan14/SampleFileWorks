@@ -106,7 +106,6 @@
             <?php
 
                 
-
             ?>
         </div>
         <div class="footer">
