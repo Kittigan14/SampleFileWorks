@@ -1,7 +1,6 @@
 import time
 
 epsilon = 1.0
-number = 1.0
 start_time = time.time()
 
 while (1.0 + epsilon != 1.0):
