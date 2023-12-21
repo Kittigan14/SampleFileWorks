@@ -4,33 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectangle Area Calculator</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <?php
         $height = 8;
-        $width = 15;
-        $Sum = 1/2 * ($width * $height);
+        $a = 3;
+        $b = 5;
+        $Sum = 1/2 * $height * ($a + $b);
     ?>
     <div class="table">
-        <table border="2px" align="center" width="500" class="content">
+        <table border="2px" align="center" width="500">
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="2" align="center" class="title">
                     <big> คำนวณพื้นที่สี่เหลี่ยมคางหมู </big>
                 </td>
             </tr>
             <tr>
-                <td>Enter Width : </td>
-                <td><input type="text" name="width" size="5" value="<?php echo $width; ?>"/> </td>
+                <td>Enter Height </td>
+                <td class="result"><?php echo $height; ?></td>
             </tr>
             <tr>
-                <td>Enter Height : </td>
-                <td><input type="text" name="height" size="5" value="<?php echo $height; ?>"/></td>
+                <td>Enter length of parallel lines a </td>
+                <td class="result"><?php echo $a; ?></td>
             </tr>
             <tr>
-                <td>Sum : </td>
-                <td><input type="text" name="sum" size="5" value="<?php echo $Sum; ?>"/></td>
+                <td>Enter length of parallel lines b </td>
+                <td class="result"><?php echo $b; ?></td>
+            </tr>
+            <tr>
+                <td>Sum 1/2 * Height * (a + b) </td>
+                <td class="result"><?php echo $Sum; ?></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" class="btn">

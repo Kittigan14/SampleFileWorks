@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectangle Area Calculator</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="table">
         <table border="2px" align="center" width="500" class="content">
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="2" class="title">
                     <big> การคำนวณ </big>
                 </td>
             </tr>

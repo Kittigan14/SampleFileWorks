@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectangle Area Calculator</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <?php
         $P = 3.14;
-        $R = 6;
-        $Sum = ($R ** 2) * $P;
+        $radius = 6;
+        $Sum = ($radius ** 2) * $P;
     ?>
     <div class="table">
-        <table border="2px" align="center" width="500" class="content">
+        <table border="2px" align="center" width="500">
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="2" align="center" class="title">
                     <big> คำนวณพื้นที่วงกลม </big>
                 </td>
             </tr>
             <tr>
-                <td>Enter P : </td>
-                <td><input type="text" name="width" size="5" value="<?php echo $P; ?>"/> </td>
+                <td>Enter Pi </td>
+                <td class="result"><?php echo $P; ?></td>
             </tr>
             <tr>
-                <td>Enter R : </td>
-                <td><input type="text" name="height" size="5" value="<?php echo $R; ?>"/></td>
+                <td>Enter Radius </td>
+                <td class="result"><?php echo $radius; ?></td>
             </tr>
             <tr>
-                <td>Sum : </td>
-                <td><input type="text" name="sum" size="5" value="<?php echo $Sum; ?>"/></td>
+                <td>Sum  πr2 </td>
+                <td class="result"><?php echo $Sum; ?></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" class="btn">

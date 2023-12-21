@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectangle Area Calculator</title>
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <?php
-        $width = 5;
+        $base = 5;
         $height = 3;
-        $Sum =  1/2 * ($width * $height);
+        $Sum =  1/2 * ($base * $height);
     ?>
     <div class="table">
         <table border="2px" align="center" width="500" class="content">
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="2" align="center" class="title">
                     <big> คำนวณพื้นที่สามเหลี่ยม </big>
                 </td>
             </tr>
             <tr>
-                <td>Enter Width : </td>
-                <td><input type="text" name="width" size="5" value="<?php echo $width; ?>"/> </td>
+                <td>Enter Base </td>
+                <td class="result"><?php echo $base; ?></td>
             </tr>
             <tr>
-                <td>Enter Height : </td>
-                <td><input type="text" name="height" size="5" value="<?php echo $height; ?>"/></td>
+                <td>Enter Height </td>
+                <td class="result"><?php echo $height; ?></td>
             </tr>
             <tr>
-                <td>Sum : </td>
-                <td><input type="text" name="sum" size="5" value="<?php echo $Sum; ?>"/></td>
+                <td>Sum 1/2 * (Base * Height) </td>
+                <td class="result"><?php echo $Sum; ?></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" class="btn">
