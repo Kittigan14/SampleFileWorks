@@ -20,16 +20,19 @@ body {
 
 table {
     border-collapse: collapse;
-    width: 650px;
+    width: 800px;
     font-size: 30px;
     font-weight: 600;
     border: 1px solid #1a1a1a;
 }
 
-th,
 td {
     text-align: left;
     padding: 8px;
+}
+
+tr {
+    width: 250px;
 }
 
 tr:nth-child(even) {
@@ -49,14 +52,10 @@ td a:hover {
     color: #45bece;
 }
 
-.result {
-    width: 100px;
-    font-size: 30px;
-    font-weight: 600;
-    text-align: center;
-    border: none;
-    background: transparent;
+.text-input {
+    width: 700px;
 }
+
 
 
 input[type="submit"],
@@ -64,9 +63,9 @@ input[type="reset"],
 .back {
     background: transparent;
     border: 1px solid #1a1a1a;
-    width: 100px;
+    width: 60px;
     height: 30px;
-    margin: 5px;
+    margin: 10px;
     border: none;
     font-size: 18px;
     font-weight: 600;
@@ -74,6 +73,36 @@ input[type="reset"],
     transition: all .4s ease;
 }
 
+.btn {
+    text-align: right; /* Center align the content within the td */
+}
+
+.button-container {
+    display: inline-block; /* Make the container inline-block to center its content */
+}
+
 input:hover {
     color: #45bece;
+}
+
+.result {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: right;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.result input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.result input[type="text"] {
+    padding: 0;
 }
