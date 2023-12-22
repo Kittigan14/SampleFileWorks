@@ -36,12 +36,16 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2
-    
+    background-color: #7dc7d2;
+    transition: all .4s ease;
 }
 
 .title {
     text-align: center;
+}
+
+.text-input {
+    width: 700px;
 }
 
 td a {
@@ -49,14 +53,12 @@ td a {
 }
 
 td a:hover {
-    color: #45bece;
+    color: #2d99b6;
 }
 
-.text-input {
-    width: 700px;
+td a:hover a:nth-child(even) {
+    color: #cccccc;
 }
-
-
 
 input[type="submit"],
 input[type="reset"],

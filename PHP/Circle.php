@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rectangle Area Calculator</title>
+    <title>Circle Area Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,23 +22,29 @@
                 </td>
             </tr>
             <tr>
-                <td>Enter Pi </td>
-                <td class="result"><?php echo $P; ?></td>
+                <td class="text-input"> π </td>
+                <td><input type="text" class="result" name="height" value="3.14"></td>
             </tr>
             <tr>
-                <td>Enter Radius </td>
-                <td class="result"><?php echo $radius; ?></td>
+                <td class="text-input">รัศมี</td>
+                <td><input type="text" class="result" name="a" value="<?php echo $radius; ?>"></td>
             </tr>
             <tr>
-                <td>Sum  πr2 </td>
-                <td class="result"><?php echo $Sum; ?></td>
+                <td class="text-input">สูตร πr2 </td>
+                <td style="text-align: right;"><?php echo $Sum;?></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" class="btn">
-                    <a href="./index.php">Back</a>
+                    <div class="button-container">
+                        <input type="submit" value="คำนวณ">
+                        <input type="reset" value="รีเซ็ตค่า">
+                        <a href="./index.php" class="back">กลับ</a>
+                    </div>
                 </td>
             </tr>
+
         </table>
     </div>
 </body>
+
 </html>

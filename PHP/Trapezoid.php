@@ -4,28 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rectangle Area Calculator</title>
+    <title>Trapezoid Area Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <?php
-        $height = isset($_POST['height']) ? $_POST['height'] : '';
-        $a = isset($_POST['a']) ? $_POST['a'] : '';
-        $b = isset($_POST['b']) ? $_POST['b'] : '';
-        $Sum = '';
+        // $height = isset($_POST['height']) ? $_POST['height'] : '';
+        // $a = isset($_POST['a']) ? $_POST['a'] : '';
+        // $b = isset($_POST['b']) ? $_POST['b'] : '';
+        // $Sum = '';
 
-        if (isset($_POST['reset'])) {
-            $height = 0;
-            $a = 0;
-            $b = 0;
-        }
+        // if (isset($_POST['reset'])) {
+        //     $height = 0;
+        //     $a = 0;
+        //     $b = 0;
+        // }
         
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($height !== '' && $a !== '' && $b !== '') {
-                $Sum = 1/2 * $height * ($a + $b);
-            }
-        }
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //     if ($height !== '' && $a !== '' && $b !== '') {
+        //         $Sum = 1/2 * $height * ($a + $b);
+        //     }
+        // }
+
+        $height = 14;
+        $a = 3;
+        $b = 3;
+        $Sum = 1/2 * $height * ($a + $b);
     ?>
 
     <form method="post" action="">
