@@ -36,4 +36,6 @@ const result3 = findWords(words3, characters3);
 console.log(result3);
 
 
-module.exports = { findWords };
+module.exports = { 
+  findWords
+};
