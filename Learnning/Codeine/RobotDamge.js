@@ -8,14 +8,10 @@ function RobotDamge(obj, hp) {
             else if (OBJs === 'b') Heart = hp -= 40;
             else if (OBJs === 'l') Heart = hp -= 20;
         } 
-        if (hp === 0) return 'You Win : Boss Death!!'
+        if (hp === 0) return 'You Win : Boss Die!!'
     }
     return 'Total Hp Boss : ' + Heart;
 }
-
-// H = Head  (-60)
-// B = Body  (-40)
-// L = Leg   (-20)
 
 let Hp_Boss = 600;
 
@@ -35,3 +31,8 @@ const Damge_Player4 = ['h', 'b', 'b', 'l', 'b',
                        'h', 'b', 'b', 'l', 'b',
                        'h', 'b', 'b', 'l', 'b'];
 console.log(RobotDamge(Damge_Player4, Hp_Boss))
+
+
+// H = Head  (-60)
+// B = Body  (-40)
+// L = Leg   (-20)
