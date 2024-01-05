@@ -1,14 +1,14 @@
 function findAllPeakElements(nums) {
-    const peakIndices = [];
+    const peak = [];
 
     if (nums.length === 1) return [0];
 
     for (let i = 0; i < nums.length; i++) {
         if ((i === 0 && nums[i] > nums[i + 1]) || 
             (i === nums.length - 1 && nums[i] > nums[i - 1]) ||
-            (nums[i] > nums[i - 1] && nums[i] > nums[i + 1])) peakIndices.push(i);
+            (nums[i] > nums[i - 1] && nums[i] > nums[i + 1])) peak.push(i);
     }
-    return peakIndices;
+    return peak;
 }
 
 const nums1 = [3, 2, 3, 1];
