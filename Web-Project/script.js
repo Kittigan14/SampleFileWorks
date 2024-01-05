@@ -1,7 +1,7 @@
 function on() {
-    document.getElementById('cardOverlay').style.display = 'black';
+    document.getElementById('cardOverlay').style.opacity = '1';
 }
 
 function off() {
-    document.getElementById('cardOverlay').style.display = 'none';
+    document.getElementById('cardOverlay').style.opacity = '0';
 }
