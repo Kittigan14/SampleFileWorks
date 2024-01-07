@@ -1,0 +1,12 @@
+npm init -y
+
+npm install --save-dev prettier
+
+npm install express
+
+npm install dotenv
+
+# Run
+npm start
+npm run format
+node index.js
