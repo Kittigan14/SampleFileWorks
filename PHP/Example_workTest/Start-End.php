@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Calculator Start > End</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -21,8 +21,12 @@
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($start !== '' && $end !== '') {
-                $Sum = summation($start, $end);
+            $Sum = ($start !== '' && $end !== '') ? summation($start, $end) : '';
+
+            if (isset($_POST['reset'])) {
+                $start = '';
+                $end = '';
+                $Sum = '';
             }
         }
     ?>
@@ -31,7 +35,7 @@
         <table border="2px" align="center" width="500">
             <tr>
                 <td colspan="2" align="center" class="title">
-                    <big> Calculator </big>
+                    <big> Start >> End </big>
                 </td>
             </tr>
             <tr>
@@ -50,8 +54,7 @@
                 <td colspan="2" align="center" class="btn">
                     <div class="button-container">
                         <input type="submit" value="คำนวณ">
-                        <input type="reset" value="รีเซ็ตค่า">
-                        <a href="./index.php" class="back">กลับ</a>
+                        <input type="submit" name="reset" value="รีเซ็ตค่า">
                     </div>
                 </td>
             </tr>

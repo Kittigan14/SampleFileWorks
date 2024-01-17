@@ -16,8 +16,7 @@
         $Expenditure = isset($_POST['expenditure']) ? $_POST['expenditure'] : '';
         $Tax = '';
 
-        function summation($Salary, $Deductible, $Expenditure)
-        {
+        function summation($Salary, $Deductible, $Expenditure) {
             $Interest = 0.0;
             $Income = (($Salary * 12) - $Deductible) - $Expenditure;
 
@@ -27,7 +26,7 @@
             else if ($Salary >= 750000) $Interest = 0.15;
             else if ($Salary >= 500000) $Interest = 0.10;
             else if ($Salary >= 300000) $Interest = 0.05;
-            else $Interest = 0.0;
+            else return "ไม่เสียภาษี";
 
             $Sum = $Income * $Interest;
 
@@ -35,22 +34,26 @@
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($Salary !== '' && $Deductible !== '' && $Expenditure !== '') {
-                $Tax = summation($Salary, $Deductible, $Expenditure);
+            $Tax = ($Salary !== '' && $Deductible !== '' && $Expenditure !== '') ? summation($Salary, $Deductible, $Expenditure) : '';
+
+            if (isset($_POST['reset'])) {
+                $Salary = '';
+                $Deductible = '';
+                $Expenditure = '';
+                $Tax = '';
             }
         }
-
     ?>
 
     <form method="post" action="">
         <table border="2px" align="center" width="500">
             <tr>
                 <td colspan="2" align="center" class="title">
-                    <big> Calculator </big>
+                    <big> คำนวณภาษี </big>
                 </td>
             </tr>
             <tr>
-                <td class="text-input">เงินเดือน </td>
+                <td class="text-input">เงินเดือน/เดือน</td>
                 <td><input type="text" class="result" name="salary" value="<?php echo $Salary; ?>"></td>
             </tr>
             <tr>
@@ -62,14 +65,14 @@
                 <td><input type="text" class="result" name="expenditure" value="<?php echo $Expenditure; ?>"></td>
             </tr>
             <tr>
-                <td class=" text-input">ภาษี</td>
+                <td class=" text-input">ภาษี/ปี</td>
                 <td style="text-align: right;"><?php echo $Tax; ?></td>
             </tr>
             <tr>
                 <td colspan="2" align="center" class="btn">
                     <div class="button-container">
                         <input type="submit" value="คำนวณ">
-                        <input type="submit" value="รีเซ็ตค่า">
+                        <input type="submit" name="reset" value="รีเซ็ตค่า">
                     </div>
                 </td>
             </tr>

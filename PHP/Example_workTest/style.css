@@ -37,7 +37,7 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: #7dc7d2;
+    background-color: #b5dfe5;
     transition: all .4s ease;
 }
 
@@ -77,15 +77,11 @@ input[type="reset"],
 }
 
 .btn {
-    text-align: right; /* Center align the content within the td */
+    text-align: right;
 }
 
 .button-container {
-    display: inline-block; /* Make the container inline-block to center its content */
-}
-
-input:hover {
-    color: #45bece;
+    display: inline-block;
 }
 
 .result {
