@@ -1,8 +1,7 @@
-let getBudgets = (data) => {
-    let totalBudget = data.reduce((sum , person) => sum + person.budget , 0);
-    return console.log(totalBudget);
-}
-
+// let getBudgets = (data) => {
+//     let totalBudget = data.reduce((sum , person) => sum + person.budget , 0);
+//     return console.log(totalBudget);
+// }
 
 getBudgets([
     { name: "John"  , age: 21, budget: 23000 },
