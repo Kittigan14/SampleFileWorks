@@ -29,10 +29,10 @@ function findPositon(pos) {
             'L', 'M', 'O', 'P', 'Q',
             'R', 'T', 'U', 'V', 'X',
             'Y', 'Z'
-        ].includes(direction))) return ('GAME OVER!, YOU FOUL!!!');
-    else if (data[13] == 'user') return ('Last Position : TG1 , You WIN!');
-    else if (data[14] == 'user') return ('Last Position : TG2 , You WIN!');
-    else return (`Last Position : ${posmove}  , You LOSE! :()`);
+        ].includes(direction))) console.log ('GAME OVER!, YOU FOUL!!!');
+    else if (data[13] == 'player') console.log ('Last Position : TG1 , You WIN!');
+    else if (data[14] == 'player') console.log ('Last Position : TG2 , You WIN!');
+    else console.log (`Last Position : ${posmove}  , You LOSE! :()`);
 }
 
 const pos1 = ['n', 'e', 'n', 'E', 'e', 'n'];
@@ -41,8 +41,8 @@ const pos3 = ['n', 'e', 'W', 'w', 'w', 'w', 'n'];
 const pos4 = ['n', 'e', 'n', 'e', 'e', 's'];
 const pos5 = ['w', 'e', 'n', 'X', 'e', 's'];
 
-console.log(findPositon(pos1));
-console.log(findPositon(pos2));
-console.log(findPositon(pos3));
-console.log(findPositon(pos4));
-console.log(findPositon(pos5));
+findPositon(pos1);
+findPositon(pos2);
+findPositon(pos3);
+findPositon(pos4);
+findPositon(pos5);

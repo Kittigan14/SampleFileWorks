@@ -39,7 +39,4 @@ const characters3 = ['a', 'p', 'l', 'e', 'o', 'r', 'n', 'g'];
 const result3 = findWords(words3, characters3);
 console.log(result3);
 
-
-module.exports = {
-    findWords
-};
+module.exports = { findWords };
