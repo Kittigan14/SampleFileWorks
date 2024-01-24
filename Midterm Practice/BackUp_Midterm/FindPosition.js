@@ -41,8 +41,8 @@ const pos3 = ['n', 'e', 'W', 'w', 'w', 'w', 'n'];
 const pos4 = ['n', 'e', 'n', 'e', 'e', 's'];
 const pos5 = ['w', 'e', 'n', 'X', 'e', 's'];
 
-console.log(findPos(pos1));
-console.log(findPos(pos2));
-console.log(findPos(pos3));
-console.log(findPos(pos4));
-console.log(findPos(pos5));
+console.log(findPositon(pos1));
+console.log(findPositon(pos2));
+console.log(findPositon(pos3));
+console.log(findPositon(pos4));
+console.log(findPositon(pos5));
