@@ -1,19 +1,37 @@
-function NumberRotation(number) {
-    let numberStr = number.toString();
-    let rotations = [];
-  
-    for (let i = 0; i < numberStr.length; i++) {
-      let rotatedNumber = parseInt(numberStr.slice(i) + numberStr.slice(0, i));
-      rotations.push(rotatedNumber);
-    }
-  
-    return rotations;
+function RotationNumbers(Values) {
+
+  let ValueStr = Values.toString();
+  let CollectNumbers  = [];
+
+  for ( let index = 0 ; index < ValueStr.length; index++ ) {
+
+      let Rotation = parseInt( ValueStr.slice( index ) + ValueStr.slice( 0 , index ) );
+
+      CollectNumbers.push( Rotation );
   }
-  
-  // Test cases
-  let result1 = NumberRotation(123);
-  let result2 = NumberRotation(98765);
-  
-  console.log(result1); // [123, 231, 312]
-  console.log(result2); // [98765, 87659, 76598, 65987]
-  
+
+  return console.log( CollectNumbers )
+}
+
+RotationNumbers( 123 );
+RotationNumbers( 98765 );
+
+// EX : 1 2 3
+
+// value.slice( 0 )         --> 1 2 3
+
+// value.slice( i++ )       --> 1 2 3
+//                          --> 1 2
+//                          --> 1 
+
+// value.slice( 0 , i++ )   --> 1
+//                          --> 1 2
+//                          --> 1 2 3
+
+
+// value.slice( i++ ) + value.slice( 0 , i++ )
+//   1 >     --> 1 2 3    
+//   2 >     --> 2 3        > slice( 1 ) + slice( 0 , 1 )
+//   3 >     --> 2 3 1      > push
+//   4 >     --> 3 1        > slice( 2 ) + slice( 0 , 2 )
+//   5 >     --> 3 1 2      > push
