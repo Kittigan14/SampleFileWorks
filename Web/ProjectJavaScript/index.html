@@ -8,24 +8,73 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
-    <title>Home Page</title>
+    <title>Movie Minds Hub</title>
+    <link rel="icon" type="image/x-icon" href="./Icon/Icon-WebPage.png">
 </head>
 
 <body>
 
+    <!-- Nav Bar Menu -->
     <div class="navbar">
-        <a href="" class="nav-item1" id="navitem-1">หน้าแรก</a>
-        <a href="" class="nav-item3" id="navitem-3">เชิญชวน</a>
-        <a href="" class="nav-item2" id="navitem-2">สถานที่ท่องเที่ยว</a>
-        <a href="" class="nav-item4" id="navitem-4">ติดต่อ</a>
-        <a href="#" id="textmode" class="textmode">Text Mode</a>
+
+        <!-- Logo Webpage -->
+        <div class="navbar-logo">
+            <img src="./Icon/Logo-WebPage.png" width="150px" height="150px">
+        </div>
+
+        <!-- Caption -->
+        <span class="navber-caption"></span>
+        <p class="caption-text"> REVIEWS BY YOU , FOR YOU </p>
+
+        <!-- Menu -->
+        <a href="./index.html"  class="nav-item"> Home </a>
+        <a href="./Movie.html"  class="nav-item"> Movie </a>
+        <a href="./Review.html" class="nav-item"> Review </a>
+        <a href="./Contact.html"class="nav-item"> Contact </a>
+
+
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+
+            <input id="inputSearch" type="text" placeholder="Search...">
+
+            <button type="submit" class="search-icon">
+
+                <img src="./Icon/Search-Icon-Dark.png" width="24px" height="24px" alt="Search">
+
+            </button>
+
+        </div>
+
+        <!-- Text Dark Mode -->
+        <!-- <a href="#" id="textmode" class="textmode">Text Mode</a>
+        
         <label class="toggle">
+        
             <input type="checkbox" id="modeToggle">
             <span class="slider round"></span>
-        </label>
+        
+        </label> -->
+
+    </div>
+
+    <!-- Banner Content -->
+    <div class="banner-container">
+
+        <div class="banner-images">
+
+            <!-- Title Banner -->
+            <div class="banner-title">
+                <h1> Movie <br> Minds Hub </h1>
+            </div>
+
+        </div>
+
     </div>
 
 </body>
+
 </html>
