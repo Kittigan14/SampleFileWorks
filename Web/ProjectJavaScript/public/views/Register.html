@@ -4,12 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../Css/style.css">
     <title>Movie Minds Hub</title>
     <link rel="icon" type="image/x-icon" href="../Icon/Icon-WebPage.png">
 </head>
@@ -40,7 +35,7 @@
         </div>
 
         <!-- Botton Login  -->
-        <button class="button-login"> 
+        <button class="button-login">
             <a href="/login"> Login </a>
         </button>
 
@@ -55,19 +50,19 @@
 
         <h2>Register</h2>
 
-        <form action="/registerPost" method="post">
+        <form action="/registerPost" method="post" class="form">
 
-            <label for="username">Username:</label>
+            <label for="username"> User Name:</label>
             <input type="text" id="username" name="username" placeholder="Enter username...">
-        
-            <label for="email">Email:</label>
+
+            <label for="email"> Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter email...">
-        
-            <label for="password">Password:</label>
+
+            <label for="password"> Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter password...">
-        
+
             <button type="submit" class="button-submit-login">Submit</button>
-        
+
         </form>
     </div>
 
