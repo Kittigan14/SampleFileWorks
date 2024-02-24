@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/search.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Css/style.css">
     <title>Movie Minds Hub</title>
-    <link rel="icon" type="image/x-icon" href="./Icon/Icon-WebPage.png">
+    <link rel="icon" type="image/x-icon" href="../Icon/Icon-WebPage.png">
 </head>
 
 <body>
@@ -19,13 +19,9 @@
     <!-- Nav Bar Menu -->
     <div class="navbar">
 
-        <!-- Caption -->
-        <!-- <span class="navber-caption"></span> -->
-        <!-- <p class="caption-text"> REVIEWS BY YOU , FOR YOU </p> -->
-
         <!-- Menu -->
         <ul class="navbar-menu">
-            <li> <a href="./index.html" class="nav-item"> Home </a> </li>
+            <li> <a href="/" class="nav-item"> Home </a> </li>
             <li> <a href="./Movie.html" class="nav-item"> Movie </a> </li>
             <li> <a href="./Review.html" class="nav-item"> Review </a> </li>
             <li> <a href="./Contact.html" class="nav-item"> Contact </a> </li>
@@ -33,13 +29,8 @@
 
         <!-- Logo Webpage -->
         <div class="navbar-logo">
-            <img src="./Icon/Logo-WebPage.png" width="150px" height="150px">
+            <img src="../Icon/Logo-WebPage.png" width="150px" height="150px">
         </div>
-        <!-- <a href="./index.html"  class="nav-item"> Home </a> -->
-        <!-- <a href="./Movie.html"  class="nav-item"> Movie </a> -->
-        <!-- <a href="./Review.html" class="nav-item"> Review </a> -->
-        <!-- <a href="./Contact.html"class="nav-item"> Contact </a> -->
-
 
         <!-- Search Bar -->
         <div class="search-bar" id="searchBar">
@@ -49,15 +40,36 @@
         </div>
 
         <!-- Botton Login  -->
-        <button class="button-login"> Login </button>
+        <button class="button-login"> 
+            <a href="/login"> Login </a>
+        </button>
 
         <!-- Botton Register  -->
-        <button class="button-register"> register </button>
+        <button class="button-register">
+            <a href="/register"> register </a>
+        </button>
 
     </div>
 
-    <div class="login-form">
-        
+    <div class="login-container">
+
+        <h2>Login</h2>
+
+        <form action="#" method="POST">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="button-submit-login">Login</button>
+
+            <button class="forget-button">
+                <a href=""> forget password </a>
+            </button>
+
+        </form>
     </div>
 
 </body>

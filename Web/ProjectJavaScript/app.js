@@ -3,6 +3,7 @@ const axios = require('axios');
 const path = require('path');
 var bodyParser = require('body-parser');
 const app = express();
+const port = process.env.PORT || 5500;
 
 const base_url = "http://localhost:3000";
 
@@ -16,13 +17,17 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', async (req, res) => {
-    try {
-        const respones = await axios.get(base_url + '/movies');
-        res.render("movies", {
-            movies: respones.data
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Error');
-    }
+    res.sendFile(path.join(__dirname, '/public/views/index.html'));
 });
+
+app.get('/login', async (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/views/Login.html'));
+});
+
+app.get('/register', async (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/views/Register.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Server started at http://localhost:${port}`)
+})
