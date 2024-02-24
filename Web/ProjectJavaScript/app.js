@@ -10,7 +10,7 @@ app.use(express.urlencoded({
 }));
 app.use(express.static('public'));
 
-const db = new sqlite.Database("DataSystem.Sqlite3");
+const db = new sqlite.Database("movieSystem.sqlite");
 
 // Create paramitor sqlite
 db.run(`CREATE TABLE IF NOT EXISTS Genres (
@@ -48,6 +48,32 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
 
+// Login Users
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/views/Login.html'));
+});
+
+app.post('/loginPost', (req, res) => {
+    const data = req.body;
+    const sqlSearch = "SELECT * FROM Users WHERE username = ? AND password = ?";
+
+    db.get(sqlSearch, [data.username, data.password], (err, row) => {
+        if (err) {
+            return console.error(err.message);
+        }
+
+        if (row) {
+            // Successful login
+            console.log(`Login successfully for user: ${data.username}`);
+            res.sendFile(path.join(__dirname, './public/views/index.html'));
+        } else {
+            // Failed login
+            res.send("<script>alert('Login failed username or email.'); window.location='/login';</script>");
+            return;
+        }
+    });
+});
+
 // Create Users
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/views/Register.html'));
@@ -58,30 +84,64 @@ app.post("/registerPost", (req, res) => {
     const sqlCheck = "SELECT * FROM Users WHERE username = ? OR email = ?";
     const sqlInsert = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
 
+    // Check if username or email already exists
     db.get(sqlCheck, [data.username, data.email], (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send("Internal Server Error");
+        }
+
+        if (row) {
+            return res.send("<script>alert('Entry with the same username or email already exists.'); window.location='/register';</script>");
+        }
+
+        // Insert user into the database
+        db.run(sqlInsert, [data.username, data.email, data.password], function (err) {
+            if (err) {
+                console.error(err.message);
+                return res.status(500).send("Internal Server Error");
+            }
+
+            // Retrieve the last inserted rowid
+            const lastInsertId = this.lastID;
+
+            console.log(`A row has been inserted with rowid ${lastInsertId}`);
+            console.log(`The corresponding userid is ${lastInsertId}`);
+
+            const successPath = path.join(__dirname, "/public/views/index.html");
+            return res.sendFile(successPath);
+        });
+    });
+});
+
+app.delete("/registerPost/:id", (req, res) => {
+    const id = req.params.id;
+    const sqlDelete = "DELETE FROM Users WHERE usersid = ?";
+
+    db.run(sqlDelete, [id], (err) => {
         if (err) {
             return console.error(err.message);
         }
 
-        if (row) {
-            // console.log("Entry with the same username or email already exists.");
-            res.send("<script>alert('Entry with the same username or email already exists.'); window.location='/register';</script>");
-            return;
-            // return res.sendFile(path.join(__dirname, "/public/views/Register.html"));
-        }
+        console.log(`Row with ID ${id} has been deleted`);
 
-        console.log("SQL Insert Statement:", sqlInsert);
-        console.log("Data to be Inserted:", [data.username, data.email, data.password]);
-
-        // Corrected the insertion statement
-        db.run(sqlInsert, [data.username, data.email, data.password], function (err) {
-            if (err) {
-                return console.error(err.message);
+        db.run("UPDATE Users SET usersid = usersid - 1 WHERE usersid > ?", [id], (updateErr) => {
+            if (updateErr) {
+                return console.error(updateErr.message);
             }
 
-            console.log(`A row has been inserted with rowid ${this.lastID}`);
-            const Success = path.join(__dirname, "/public/views/index.html");
-            res.sendFile(Success);
+            console.log("Row IDs have been reorganized");
+
+            db.run("UPDATE SQLITE_SEQUENCE SET seq = (SELECT MAX(usersid) FROM Users)", (sequenceUpdateErr) => {
+                if (sequenceUpdateErr) {
+                    return console.error(sequenceUpdateErr.message);
+                }
+
+                console.log("Sequence has been updated");
+                res.status(200).json({
+                    message: "Data deleted successfully"
+                });
+            });
         });
     });
 });
