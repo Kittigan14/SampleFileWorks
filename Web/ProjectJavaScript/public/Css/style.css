@@ -115,16 +115,18 @@ body {
         outline: none;
         border: none;
         background: #ffffffc8;
-        width: 70px;
-        height: 30px;
-        margin: 20px;
+        width: 90px;
+        height: 48px;
+        font-size: 20px;
         border-radius: 5px;
+        margin: 10px;
         transition: all .4s ease;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     }
 
     & .button-login:hover,
     .button-register:hover {
-        transform: scale(1.2);
+        transform: scale(1.1);
         background: #272829;
         color: #ebe8e7;
     }
@@ -176,22 +178,22 @@ body {
 /* Animation Change Images */
 @keyframes changeImage {
     0% {
-        background-image: url('./images/Movie-Banner1.png');
+        background-image: url('../images/Movie-Banner1.png');
     }
 
     25% {
-        background-image: url('./images/Movie-Banner2.jpg');
+        background-image: url('../images/Movie-Banner2.jpg');
     }
 
     50% {
-        background-image: url('./images/Movie-Banner3.jpg');
+        background-image: url('../images/Movie-Banner3.jpg');
     }
 
     75% {
-        background-image: url('./images/Movie-Banner4.jpg');
+        background-image: url('../images/Movie-Banner4.jpg');
     }
 
     100% {
-        background-image: url('./images/Movie-Banner5.png');
+        background-image: url('../images/Movie-Banner5.png');
     }
 }
