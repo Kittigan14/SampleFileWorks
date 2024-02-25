@@ -70,3 +70,9 @@ Table Genres
 - GenresID (PK)
 - Name
 ------------------
+
+
+ALTER TABLE Movies ADD COLUMN Image BLOB;
+
+-- INSERT ข้อมูลภาพ
+UPDATE Movies SET Image = (SELECT readfile('path/to/your/image.jpg')) WHERE MovieID = 1;

@@ -43,7 +43,6 @@ db.run(`CREATE TABLE IF NOT EXISTS Movies (
     movieid INTEGER PRIMARY KEY AUTOINCREMENT,
     Title TEXT,			
     Release DATE,			
-    genresid INTEGER,
     FOREIGN KEY (genresid) REFERENCES Genres(genresid)
   )`);
 
