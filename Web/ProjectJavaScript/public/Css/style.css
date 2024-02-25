@@ -221,7 +221,8 @@ body {
 /* Css Login.html & Register.html */
 
 .login-container,
-.register-container {
+.register-container,
+.forget-container {
     width: 450px;
     height: 450px;
     padding: 25px;
@@ -265,7 +266,8 @@ body {
         outline: none;
     }
 
-    & .button-submit-login {
+    & .button-submit-login,
+    .button-submit-forget {
         padding: 10px;
         background-color: #007BFF;
         color: #fff;
@@ -276,7 +278,8 @@ body {
         margin-top: 15px;
     }
 
-    & .button-submit-login:hover {
+    & .button-submit-login:hover,
+    .button-submit-forget:hover {
         background-color: #0056b3;
     }
 

@@ -138,7 +138,6 @@ app.post("/registerPost", async (req, res) => {
 app.get('/movies', (req, res) => {
     console.log('loggedInUsername from session:', req.session.loggedInUsername);
 
-    // ดึงข้อมูลจากตาราง Genres
     db.all('SELECT GenresID, Title FROM Genres', (err, genres) => {
         if (err) {
             console.error(err.message);
@@ -146,9 +145,8 @@ app.get('/movies', (req, res) => {
             return;
         }
 
-        console.log('Genres data:', genres); // เพิ่มบรรทัดนี้เพื่อตรวจสอบข้อมูลที่ถูกดึงมา
+        // console.log('Genres data:', genres);
 
-        // ดึงข้อมูลจากตาราง Movies
         db.all('SELECT * FROM Movies', (err, movies) => {
             if (err) {
                 console.error(err.message);
@@ -156,13 +154,12 @@ app.get('/movies', (req, res) => {
                 return;
             }
 
-            console.log('Movies data:', movies); // เพิ่มบรรทัดนี้เพื่อตรวจสอบข้อมูลที่ถูกดึงมา
+            // console.log('Movies data:', movies);
 
-            // ส่งข้อมูลไปยัง EJS template
             res.render('Movie.ejs', {
                 loggedInUsername: req.session.loggedInUsername || '',
-                genres: genres, // ส่งข้อมูล genres ไปยัง EJS template
-                movies: movies // ส่งข้อมูล movies ไปยัง EJS template
+                genres: genres,
+                movies: movies
             });
         });
     });
@@ -183,12 +180,53 @@ app.get('/getMoviesByGenre/:genreId', (req, res) => {
     });
 });
 
-
 // Updated logout route to clear the session
 app.post('/logout', (req, res) => {
     // Clear the session
     req.session.destroy();
     res.redirect('/login');
+});
+
+// Forget password & UPDATE PASSWORD
+app.get('/forgetPassword', (req, res) => {
+    res.render('forgetPassword.ejs');
+});
+
+app.post('/editPassword', (req, res) => {
+    const {
+        email,
+        newPassword,
+        confirmPassword
+    } = req.body;
+
+    db.get('SELECT * FROM Users WHERE email = ?', [email], (err, user) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        if (!user) {
+            res.status(404).send('User not found');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            res.status(400).send('Passwords do not match');
+            return;
+        }
+
+        // const userId = user.id;
+
+        db.run('UPDATE Users SET password = ? WHERE email = ?', [newPassword, email], (err) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+            res.send("<script>alert('Password updated successfully.'); window.location='/login';</script>");
+        });
+    });
 });
 
 // Run Servers PORT 3000
