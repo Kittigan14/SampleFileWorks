@@ -174,8 +174,7 @@ app.get('/getMoviesByGenre/:genreId', (req, res) => {
             res.status(500).send('Internal Server Error');
             return;
         }
-
-        // ส่งข้อมูล Movies กลับเป็น JSON
+        // Return Data to Json
         res.json(movies);
     });
 });
@@ -192,6 +191,7 @@ app.get('/forgetPassword', (req, res) => {
     res.render('forgetPassword.ejs');
 });
 
+// Update Password
 app.post('/editPassword', (req, res) => {
     const {
         email,
@@ -199,6 +199,7 @@ app.post('/editPassword', (req, res) => {
         confirmPassword
     } = req.body;
 
+    // Check if email already exists
     db.get('SELECT * FROM Users WHERE email = ?', [email], (err, user) => {
         if (err) {
             console.error(err.message);
@@ -216,8 +217,7 @@ app.post('/editPassword', (req, res) => {
             return;
         }
 
-        // const userId = user.id;
-
+        // Update Password for Table Users Where email
         db.run('UPDATE Users SET password = ? WHERE email = ?', [newPassword, email], (err) => {
             if (err) {
                 console.error(err.message);
