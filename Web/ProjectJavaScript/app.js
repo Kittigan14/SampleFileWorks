@@ -1,9 +1,9 @@
 const express = require('express');
-const app = express();
-const path = require('path');
-const sqlite = require('sqlite3');
 var bodyParser = require('body-parser');
 const session = require('express-session');
+const sqlite = require('sqlite3');
+const path = require('path');
+const app = express();
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
