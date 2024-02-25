@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: 'your-secret-key', // Change this to a strong, unique key
+    secret: 'your-secret-key',
     resave: true,
     saveUninitialized: true
 }));
@@ -54,14 +54,6 @@ db.run(`CREATE TABLE IF NOT EXISTS Reviews (
     FOREIGN KEY (usersid) REFERENCES Users(usersid),
     FOREIGN KEY (movieid) REFERENCES Movies(movieid)
   )`);
-
-const setLoggedInUsername = (req, res, next) => {
-    res.locals.loggedInUsername = req.query.username || '';
-    next();
-};
-
-// Use the middleware for all routes
-app.use(setLoggedInUsername);
 
 // HomePage
 app.get('/', async (req, res) => {
@@ -102,10 +94,6 @@ app.get('/movies', (req, res) => {
     console.log('loggedInUsername from session:', req.session.loggedInUsername);
     res.render('Movie.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
 });
-
-// app.post('/logout', (req, res) => {
-//     res.redirect('/login');
-// });
 
 // Create Users
 app.get('/register', async (req, res) => {
