@@ -40,7 +40,7 @@
         </div>
 
         <!-- Botton Login  -->
-        <button class="button-login"> 
+        <button class="button-login">
             <a href="/login"> Login </a>
         </button>
 
@@ -56,19 +56,31 @@
         <h2>Login</h2>
 
         <form action="loginPost" method="post">
-
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="submit" class="button-submit-login">Login</button>
+            <form id="loginForm">
+                <button type="submit" class="button-submit-login">Login</button>
+            </form>
 
             <button class="forget-button">
                 <a href=""> forget password </a>
-            </button>
+            </button> <br>
 
+
+            <!-- Botton Register (conditional) -->
+            <% if (!loggedInUsername) { %>
+            <p>Don't have an account yet?
+                <a href="/register">
+                    <span class="registerTag">Register</span>
+                </a>
+            </p>
+            <!-- <button class="registerTag" id="registerButton"> -->
+            <!-- </button> -->
+            <% } %>
         </form>
     </div>
 

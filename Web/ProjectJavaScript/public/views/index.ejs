@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/style.css">
+    <!-- <script src="../Script/script.js"></script> -->
     <title>Movie Minds Hub</title>
     <link rel="icon" type="image/x-icon" href="../Icon/Icon-WebPage.png">
 </head>
@@ -13,10 +14,6 @@
 
     <!-- Nav Bar Menu -->
     <div class="navbar">
-
-        <!-- Caption -->
-        <!-- <span class="navber-caption"></span> -->
-        <!-- <p class="caption-text"> REVIEWS BY YOU , FOR YOU </p> -->
 
         <!-- Menu -->
         <ul class="navbar-menu">
@@ -39,15 +36,28 @@
 
         </div>
 
-        <!-- Botton Login  -->
-        <button class="button-login"> 
-            <a href="/login"> Login </a>
-        </button>
+        <% if (loggedInUsername) { %>
+        <!-- Show logout button and logged-in username if the user is logged in -->
+            <div class="logged-in-username" id="loggedInUsername">
+                <%= loggedInUsername %>
+            </div>
 
-        <!-- Botton Register  -->
-        <button class="button-register">
-            <a href="/register"> register </a>
-        </button>
+            <form action="/logout" method="POST">
+
+                <button type="submit" class="button-logout" id="logoutButton">Logout</button>
+                
+            </form>
+
+        <% } else { %>
+        <!-- Show login and register buttons if the user is not logged in -->
+            <button class="button-login" id="loginButton">
+                <a href="/login"> Login </a>
+            </button>
+
+            <button class="button-register" id="registerButton">
+                <a href="/register"> Register </a>
+            </button>
+        <% } %>
 
     </div>
 
@@ -64,7 +74,6 @@
         </div>
 
     </div>
-
 </body>
 
 </html>

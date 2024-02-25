@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const sqlite = require('sqlite3');
+var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'public', 'views'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Corrected express.static middleware
+app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new sqlite.Database("movieSystem.sqlite");
 
@@ -44,16 +47,19 @@ db.run(`CREATE TABLE IF NOT EXISTS Reviews (
   )`);
 
 // HomePage
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/views/index.html'));
+app.get('/', async (req, res) => {
+    // Assuming data.username is obtained from somewhere
+    const data = { username: "" };
+    res.render('index.ejs', { loggedInUsername: data.username });
 });
 
 // Login Users
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/views/Login.html'));
+app.get('/login', async (req, res) => {
+    const data = { username: "" };
+    res.render('Login.ejs', { loggedInUsername: data.username });
 });
 
-app.post('/loginPost', (req, res) => {
+app.post('/loginPost', async (req, res) => {
     const data = req.body;
     const sqlSearch = "SELECT * FROM Users WHERE username = ? AND password = ?";
 
@@ -65,7 +71,8 @@ app.post('/loginPost', (req, res) => {
         if (row) {
             // Successful login
             console.log(`Login successfully for user: ${data.username}`);
-            res.sendFile(path.join(__dirname, './public/views/index.html'));
+            // Pass the logged-in username to the index.ejs template
+            res.render('index.ejs', { loggedInUsername: data.username });
         } else {
             // Failed login
             res.send("<script>alert('Login failed username or email.'); window.location='/login';</script>");
@@ -74,12 +81,16 @@ app.post('/loginPost', (req, res) => {
     });
 });
 
+app.post('/logout', (req, res) => {
+    res.redirect('/login');
+});
+
 // Create Users
-app.get('/register', (req, res) => {
+app.get('/register', async (req, res) => {
     res.sendFile(path.join(__dirname, '/public/views/Register.html'));
 });
 
-app.post("/registerPost", (req, res) => {
+app.post("/registerPost", async (req, res) => {
     const data = req.body;
     const sqlCheck = "SELECT * FROM Users WHERE username = ? OR email = ?";
     const sqlInsert = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
@@ -108,40 +119,8 @@ app.post("/registerPost", (req, res) => {
             console.log(`A row has been inserted with rowid ${lastInsertId}`);
             console.log(`The corresponding userid is ${lastInsertId}`);
 
-            const successPath = path.join(__dirname, "/public/views/index.html");
+            const successPath = path.join(__dirname, "/public/views/Login.ejs");
             return res.sendFile(successPath);
-        });
-    });
-});
-
-app.delete("/registerPost/:id", (req, res) => {
-    const id = req.params.id;
-    const sqlDelete = "DELETE FROM Users WHERE usersid = ?";
-
-    db.run(sqlDelete, [id], (err) => {
-        if (err) {
-            return console.error(err.message);
-        }
-
-        console.log(`Row with ID ${id} has been deleted`);
-
-        db.run("UPDATE Users SET usersid = usersid - 1 WHERE usersid > ?", [id], (updateErr) => {
-            if (updateErr) {
-                return console.error(updateErr.message);
-            }
-
-            console.log("Row IDs have been reorganized");
-
-            db.run("UPDATE SQLITE_SEQUENCE SET seq = (SELECT MAX(usersid) FROM Users)", (sequenceUpdateErr) => {
-                if (sequenceUpdateErr) {
-                    return console.error(sequenceUpdateErr.message);
-                }
-
-                console.log("Sequence has been updated");
-                res.status(200).json({
-                    message: "Data deleted successfully"
-                });
-            });
         });
     });
 });
