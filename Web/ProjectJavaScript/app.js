@@ -16,15 +16,17 @@ app.use(bodyParser.urlencoded({
 // Corrected express.static middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Save Values Username
 app.use(session({
     secret: 'your-secret-key',
     resave: true,
     saveUninitialized: true
 }));
 
+// Connection Database
 const db = new sqlite.Database("movieSystem.sqlite");
 
-// Create paramitor sqlite
+// Create Table sqlite
 db.run(`CREATE TABLE IF NOT EXISTS Genres (
     genresid INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT
@@ -55,19 +57,20 @@ db.run(`CREATE TABLE IF NOT EXISTS Reviews (
     FOREIGN KEY (movieid) REFERENCES Movies(movieid)
   )`);
 
-// HomePage
+// HomePage & Show Values Username
 app.get('/', async (req, res) => {
     console.log('loggedInUsername from session:', req.session.loggedInUsername);
     res.render('index.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
 });
 
-// Login Users
+// Login Users & Show Values Username
 app.get('/login', async (req, res) => {
     res.render('Login.ejs', {
         loggedInUsername: req.session.loggedInUsername || ''
     });
 });
 
+// Search User & Password , Login
 app.post('/loginPost', async (req, res) => {
     const data = req.body;
     const sqlSearch = "SELECT * FROM Users WHERE username = ? AND password = ?";
@@ -89,17 +92,12 @@ app.post('/loginPost', async (req, res) => {
     });
 });
 
-// Example debug log in your /movies route
-app.get('/movies', (req, res) => {
-    console.log('loggedInUsername from session:', req.session.loggedInUsername);
-    res.render('Movie.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
-});
-
 // Create Users
 app.get('/register', async (req, res) => {
     res.sendFile(path.join(__dirname, '/public/views/Register.html'));
 });
 
+// Insert User to Database Table Users
 app.post("/registerPost", async (req, res) => {
     const data = req.body;
     const sqlCheck = "SELECT * FROM Users WHERE username = ? OR email = ?";
@@ -113,7 +111,7 @@ app.post("/registerPost", async (req, res) => {
         }
 
         if (row) {
-            return res.send("<script>alert('Entry with the same username or email already exists.'); window.location='/register';</script>");
+            return res.send("<script>alert('username or email is already connected.'); window.location='/register';</script>");
         }
 
         // Insert user into the database
@@ -133,6 +131,12 @@ app.post("/registerPost", async (req, res) => {
             res.redirect('/login?username=' + data.username);
         });
     });
+});
+
+// movies route
+app.get('/movies', (req, res) => {
+    console.log('loggedInUsername from session:', req.session.loggedInUsername);
+    res.render('Movie.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
 });
 
 // Updated logout route to clear the session
