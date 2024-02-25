@@ -1,8 +1,7 @@
+// >> INSERT TABLE GENRES <<
 // const sqlite3 = require('sqlite3').verbose();
-
 // const db = new sqlite3.Database('movieSystem.sqlite');
 
-// // เพิ่มข้อมูลลงในตาราง Genres
 // const genresData = [
 //   [1, 'Action'],
 //   [2, 'Adventure'],
@@ -19,26 +18,23 @@
 // genresData.forEach(data => genresInsert.run(data));
 // genresInsert.finalize();
 
-// // ปิดการเชื่อมต่อ
 // db.close();
 
-// DELETE DATA TABLE MOVIES
-// const sqlite3 = require('sqlite3').verbose();
 
+// >> DELETE DATA TABLE MOVIES <<
+// const sqlite3 = require('sqlite3').verbose();
 // const db = new sqlite3.Database('movieSystem.sqlite');
 
-// // ลบข้อมูลทั้งหมดในตาราง Movies
 // db.run('DELETE FROM Movies');
 // db.run('DELETE FROM Genres');
 
-// // ปิดการเชื่อมต่อ
 // db.close();
 
-const sqlite3 = require('sqlite3').verbose();
 
+// >> INSERT TABLE MOVIES <<
+const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('movieSystem.sqlite');
 
-// ข้อมูล Movies สำหรับ 20 รายการ
 const moviesData = [
   [1, 'Inception', '2010-07-16', 11, '../images/MoviesImg/Inception.jpg'],
   [2, 'The Dark Knight', '2008-07-18', 1, '../images/MoviesImg/The Dark Knight.jpg'],
@@ -62,28 +58,10 @@ const moviesData = [
   [20, 'Avatar', '2009-12-18', 2, '../images/MoviesImg/Avatar.jpg'],
 ];
 
-// สร้างตาราง Movies ถ้ายังไม่มี
 db.run('CREATE TABLE IF NOT EXISTS Movies (MoviesID INTEGER PRIMARY KEY, Title TEXT, ReleaseDate TEXT, Image IMAGE NOT NULL, FOREIGN KEY(GenresID) REFERENCES Genres(GenresID))');
 
-// เพิ่มข้อมูลลงในตาราง Movies
 const moviesInsert = db.prepare('INSERT INTO Movies VALUES (?, ?, ?, ?, ?)');
 moviesData.forEach(data => moviesInsert.run(data));
 moviesInsert.finalize();
 
-// ปิดการเชื่อมต่อ
 db.close();
-
-// const sqlite3 = require('sqlite3').verbose();
-// const db = new sqlite3.Database('movieSystem.sqlite');
-
-// // เพิ่มคอลัมน์ Image ในตาราง Movies
-// db.run('ALTER TABLE Movies ADD COLUMN Image TEXT;', (err) => {
-//   if (err) {
-//     console.error(err.message);
-//   } else {
-//     console.log('Added Image column to Movies table.');
-//   }
-
-//   // ปิดฐานข้อมูลหลังจากเสร็จสิ้น
-//   db.close();
-// });

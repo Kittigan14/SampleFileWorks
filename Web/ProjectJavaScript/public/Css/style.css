@@ -56,6 +56,11 @@ body {
         & a {
             color: var(--bg--dark);
             margin: 30px;
+            transition: all .5s ease;
+        }
+
+        & a:hover {
+            color: #0056b3;
         }
     }
 
@@ -97,7 +102,7 @@ body {
     & .search-bar input {
         width: 230px;
         height: 50px;
-        padding: 5px;
+        padding: 20px;
         margin-right: 10px;
         outline: none;
         border: none;
@@ -349,6 +354,14 @@ body {
             & .text-genre {
                 font-size: 18px;
                 text-transform: uppercase;
+            }
+
+            & .genres-name {
+                transition: all .5s ease;
+            }
+
+            & .genres-name:hover {
+                color: #0056b3;
             }
         }
     }
