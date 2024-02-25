@@ -1,0 +1,73 @@
+>> Home << 
+
+- Menu
+
+- logo
+
+- title
+
+- Banner
+
+- Search > Link Database : "SELECT * FROM Movie WHERE <Movie_Name>"
+
+- login > Link Database
+	-> " const Lastmovie = await Movie.findOne().sort({ id: -1 }) "
+	   " const NextID = Lastmovie ? Lastmovie.id + 1 : 1 "
+	
+	- Button Forget password : "UPDATE USER SET password = <password> WHERE UserID = UserID[i]"
+
+- register > Link Database : "INSERT INTO USER ( username, email, password ) VALUES (?, ?, ?)"
+	-> Button Submit " Success! "
+
+>> Movie <<
+
+- Movie list > Link Database : "SELECT * FROM Movie"
+	- Click <Movie[i]>
+		-> Detail movie : SELECT * FROM Movie WHERE <Movie[i]>  
+											
+- Reviews movie > Link Database								
+	-> Comment movie : "INSERT INTO Review (comment) VALUES (comment for user)"	
+		-> Time Stamp								
+											
+- Genres > Link Database : "SELECT * FROM Genres"					
+	-> Click Movie 
+
+
+>> Contact << 
+
+- Contact
+
+- Send Email > Admin Send "hot movie!" & Login Success! & Change Username, Password, Email Success!
+
+- Edit User > Edit Password : "UPDATE USER SET Password = ? WHERE <UsersID[i]>"
+	    > Edit Username : "UPDATE USER SET UserName = ? WHERE <UsersID[i]>"
+	    > Edit Email    : "UPDATE USER SET Email = ? WHERE <UsersID[i]>"
+
+
+=============================
+
+DATABASE "Movie Reviews System"
+Table Users
+- UsersID (PK) 
+- User Name			
+- Email				
+- Password			
+------------------
+Table Movies			
+- MoviesID (PK)	
+- Title				
+- Release Date			
+- Genres			
+- Rating			
+------------------
+Table Reviews		
+- ReviewsID (PK)		
+- UsersID (FK) 
+- MovieID (FK)	
+- Content
+- Time Stamp
+------------------
+Table Genres
+- GenresID (PK)
+- Name
+------------------

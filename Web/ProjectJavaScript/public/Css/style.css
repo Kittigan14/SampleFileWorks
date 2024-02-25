@@ -150,6 +150,7 @@ body {
 /* Banner Content */
 .banner-container {
     width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -294,4 +295,110 @@ body {
         color: blue;
     }
 
+}
+
+/* Css Movies */
+
+.movie-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & .movie-Genres {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 130px;
+
+        & .back-button {
+            border: none;
+            outline: none;
+            font-size: 20px;
+            background: none;
+
+            & img {
+                width: 40px;
+                height: 40px;
+                transition: all .5s ease;
+            }
+
+            & img:hover {
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 0.5rem rgba(30, 30, 30, 0.598));
+            }
+        }
+
+        & ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            & li {
+                margin: 20px;
+
+                & a {
+                    color: #272829;
+                }
+            }
+
+            & .text-genre {
+                font-size: 18px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .movie-list {
+        width: 250px;
+        height: 350px;
+        margin: 10px 50px;
+        margin-top: 10%;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all .5s ease;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+
+        & .movie-images {
+            position: relative;
+
+            & img {
+                width: 100%;
+                height: 350px;
+                transition: all .5s ease;
+            }
+
+            & img:hover {
+                transform: scale(1.05);
+            }
+
+            & .title {
+                width: 100%;
+                position: absolute;
+                padding: 15px;
+                font-size: 16px;
+                color: #1a1a1a;
+                text-align: center;
+                bottom: 0;
+                background: #ffffffaf;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 700px) {
+        .movie-list {
+            width: calc(50% - 100px);
+            margin: 6px 0;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .movie-list {
+            width: 100%;
+        }
+    }
 }

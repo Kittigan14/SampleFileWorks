@@ -60,7 +60,9 @@ db.run(`CREATE TABLE IF NOT EXISTS Reviews (
 // HomePage & Show Values Username
 app.get('/', async (req, res) => {
     console.log('loggedInUsername from session:', req.session.loggedInUsername);
-    res.render('index.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
+    res.render('index.ejs', {
+        loggedInUsername: req.session.loggedInUsername || ''
+    });
 });
 
 // Login Users & Show Values Username
@@ -136,8 +138,52 @@ app.post("/registerPost", async (req, res) => {
 // movies route
 app.get('/movies', (req, res) => {
     console.log('loggedInUsername from session:', req.session.loggedInUsername);
-    res.render('Movie.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
+
+    // ดึงข้อมูลจากตาราง Genres
+    db.all('SELECT GenresID, Title FROM Genres', (err, genres) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        console.log('Genres data:', genres); // เพิ่มบรรทัดนี้เพื่อตรวจสอบข้อมูลที่ถูกดึงมา
+
+        // ดึงข้อมูลจากตาราง Movies
+        db.all('SELECT * FROM Movies', (err, movies) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+
+            console.log('Movies data:', movies); // เพิ่มบรรทัดนี้เพื่อตรวจสอบข้อมูลที่ถูกดึงมา
+
+            // ส่งข้อมูลไปยัง EJS template
+            res.render('Movie.ejs', {
+                loggedInUsername: req.session.loggedInUsername || '',
+                genres: genres, // ส่งข้อมูล genres ไปยัง EJS template
+                movies: movies // ส่งข้อมูล movies ไปยัง EJS template
+            });
+        });
+    });
 });
+
+app.get('/getMoviesByGenre/:genreId', (req, res) => {
+    const genreId = req.params.genreId;
+
+    db.all('SELECT * FROM Movies WHERE GenresID = ?', [genreId], (err, movies) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        // ส่งข้อมูล Movies กลับเป็น JSON
+        res.json(movies);
+    });
+});
+
 
 // Updated logout route to clear the session
 app.post('/logout', (req, res) => {

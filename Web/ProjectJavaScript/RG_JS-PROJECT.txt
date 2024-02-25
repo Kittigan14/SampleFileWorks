@@ -57,8 +57,7 @@ Table Movies
 - MoviesID (PK)	
 - Title				
 - Release Date			
-- Genres			
-- Rating			
+- GenresID (FK)	
 ------------------
 Table Reviews		
 - ReviewsID (PK)		
