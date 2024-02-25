@@ -3,15 +3,24 @@ const app = express();
 const path = require('path');
 const sqlite = require('sqlite3');
 var bodyParser = require('body-parser');
+const session = require('express-session');
 const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Corrected express.static middleware
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    secret: 'your-secret-key', // Change this to a strong, unique key
+    resave: true,
+    saveUninitialized: true
+}));
 
 const db = new sqlite.Database("movieSystem.sqlite");
 
@@ -46,17 +55,25 @@ db.run(`CREATE TABLE IF NOT EXISTS Reviews (
     FOREIGN KEY (movieid) REFERENCES Movies(movieid)
   )`);
 
+const setLoggedInUsername = (req, res, next) => {
+    res.locals.loggedInUsername = req.query.username || '';
+    next();
+};
+
+// Use the middleware for all routes
+app.use(setLoggedInUsername);
+
 // HomePage
 app.get('/', async (req, res) => {
-    // Assuming data.username is obtained from somewhere
-    const data = { username: "" };
-    res.render('index.ejs', { loggedInUsername: data.username });
+    console.log('loggedInUsername from session:', req.session.loggedInUsername);
+    res.render('index.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
 });
 
 // Login Users
 app.get('/login', async (req, res) => {
-    const data = { username: "" };
-    res.render('Login.ejs', { loggedInUsername: data.username });
+    res.render('Login.ejs', {
+        loggedInUsername: req.session.loggedInUsername || ''
+    });
 });
 
 app.post('/loginPost', async (req, res) => {
@@ -64,26 +81,31 @@ app.post('/loginPost', async (req, res) => {
     const sqlSearch = "SELECT * FROM Users WHERE username = ? AND password = ?";
 
     db.get(sqlSearch, [data.username, data.password], (err, row) => {
-        if (err) {
-            return console.error(err.message);
-        }
+        if (err) return console.error(err.message);
 
         if (row) {
             // Successful login
             console.log(`Login successfully for user: ${data.username}`);
-            // Pass the logged-in username to the index.ejs template
-            res.render('index.ejs', { loggedInUsername: data.username });
+            // Set the username in the session
+            req.session.loggedInUsername = data.username;
+            // Redirect to the Home page
+            res.redirect('/');
         } else {
             // Failed login
             res.send("<script>alert('Login failed username or email.'); window.location='/login';</script>");
-            return;
         }
     });
 });
 
-app.post('/logout', (req, res) => {
-    res.redirect('/login');
+// Example debug log in your /movies route
+app.get('/movies', (req, res) => {
+    console.log('loggedInUsername from session:', req.session.loggedInUsername);
+    res.render('Movie.ejs', { loggedInUsername: req.session.loggedInUsername || '' });
 });
+
+// app.post('/logout', (req, res) => {
+//     res.redirect('/login');
+// });
 
 // Create Users
 app.get('/register', async (req, res) => {
@@ -119,12 +141,20 @@ app.post("/registerPost", async (req, res) => {
             console.log(`A row has been inserted with rowid ${lastInsertId}`);
             console.log(`The corresponding userid is ${lastInsertId}`);
 
-            const successPath = path.join(__dirname, "/public/views/Login.ejs");
-            return res.sendFile(successPath);
+            // Redirect to the login page with the username in the URL
+            res.redirect('/login?username=' + data.username);
         });
     });
 });
 
+// Updated logout route to clear the session
+app.post('/logout', (req, res) => {
+    // Clear the session
+    req.session.destroy();
+    res.redirect('/login');
+});
+
+// Run Servers PORT 3000
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`)
 });
