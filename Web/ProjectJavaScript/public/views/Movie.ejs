@@ -44,7 +44,7 @@
             <button type="submit" class="button-logout" id="logoutButton">Logout</button>
         </form>
         <% } else { %>
-            
+
         <!-- Show login and register buttons if the user is not logged in -->
         <button class="button-login" id="loginButton">
             <a href="/login"> Login </a>
@@ -59,6 +59,7 @@
 
     <div class="movie-container" id="movieContainer">
         <div class="movie-Genres">
+            <!-- แสดงรายการ Genres -->
             <ul>
                 <li class="text-genre"> Genre | </li>
                 <% for (let i = 0; i < genres.length; i++) { %>
@@ -72,22 +73,30 @@
         </div>
 
         <% for (let i = 0; i < movies.length; i++) { %>
-            <div class="movie-list" data-genre-id="<%= movies[i].GenresID %>">
-                <div class="movie-images">
-                    <a target="_blank" href="#">
-                        <img src="<%= movies[i].Image %>" alt="">
-                    </a>
-                    <div class="title"><%= movies[i].Title %></div>
-                </div>
+        <div class="movie-list" data-genre-id="<%= movies[i].GenresID %>">
+            <div class="movie-images">
+                <a href="/detailMovie/<%= movies[i].movieid %>">
+                    <img src="<%= movies[i].Image %>" alt="">
+                </a>
+                <div class="title"><%= movies[i].Title %></div>
             </div>
+        </div>
         <% } %>
     </div>
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const genresNames = document.querySelectorAll('.genres-name');
             const movieContainer = document.getElementById('movieContainer');
+
+            movieContainer.addEventListener('click', function (event) {
+                const clickedElement = event.target;
+
+                if (clickedElement.classList.contains('movie-images')) {
+                    const selectedMovieId = clickedElement.getAttribute('data-movie-id');
+                    window.location.href = `/detailMovie/${selectedMovieId}`;
+                }
+            });
 
             genresNames.forEach(genreName => {
                 genreName.addEventListener('click', function () {
@@ -97,30 +106,28 @@
                     fetch(`/getMoviesByGenre/${selectedGenreId}`)
                         .then(response => response.json())
                         .then(movies => {
-                            // สร้าง HTML ของ movies ที่ได้จาก server
                             const movieHTML = movies.map((movie, index) => {
-                                console.log('movie.Image:', movie.Image);
-                                return `
+                            console.log('movie.MoviesID:', movie.MoviesID);
+                            return `
                                 <div class="movie-list" data-genre-id="${movie.GenresID}">
-                                    <div class="movie-images">
-                                        <a target="_blank" href="#">
+                                    <div class="movie-images" data-movie-id="${movie.movieid}">
+                                        <a href="/detailMovie/${movie.movieid}">
                                             <img src="${movie.Image}" alt="">
                                         </a>
                                         <div class="title">${movie.Title}</div>
                                     </div>
                                 </div>
-                                `;
-                            }).join('');
-
-                            // แทนที่ HTML ของ movieContainer ด้วยข้อมูลใหม่
-                            movieContainer.innerHTML = `
-                                <div class="movie-Genres">
-                                    <button class="back-button">
-                                        <a href="/movies"> <img src="../Icon/back-button.png" alt=""> </a>
-                                    </button>    
-                                </div>
-                                ${movieHTML}
                             `;
+                        }).join('');
+                                                
+                        movieContainer.innerHTML = `
+                            <div class="movie-Genres">
+                                <button class="back-button">
+                                    <a href="/movies"> <img src="../Icon/back-button.png" alt=""> </a>
+                                </button>    
+                            </div>
+                                ${movieHTML}
+                        `;
                         })
                         .catch(error => console.error('Error fetching movies:', error));
                 });

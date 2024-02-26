@@ -9,6 +9,20 @@
     <link rel="icon" type="image/x-icon" href="../Icon/Icon-WebPage.png">
 </head>
 
+<style>
+
+    .login-container {
+        z-index: 999;
+    }
+
+    .banner-container {
+        z-index: 998;
+    }
+
+
+
+</style>
+
 <body>
 
     <!-- Nav Bar Menu -->
@@ -48,7 +62,9 @@
 
     <div class="login-container">
 
+        <br>
         <h2>Login</h2>
+        <br>
 
         <form action="loginPost" method="post">
             <label for="username">Username:</label>
@@ -59,11 +75,11 @@
 
             <form id="loginForm">
                 <button type="submit" class="button-submit-login">Login</button>
-            </form>
+            </form> <br>
 
             <button class="forget-button">
                 <a href="/forgetPassword">Forget password</a>
-            </button> <br>
+            </button>
 
 
             <!-- Botton Register (conditional) -->
@@ -77,6 +93,14 @@
             <!-- </button> -->
             <% } %>
         </form>
+    </div>
+
+    <div class="banner-container">
+
+        <div class="banner-images">
+
+        </div>
+
     </div>
 
 </body>

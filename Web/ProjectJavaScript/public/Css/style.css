@@ -227,7 +227,7 @@ body {
     height: 450px;
     padding: 25px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background: #ffffffc8;
+    background: #ffffff;
     border-radius: 10px;
     position: absolute;
     top: 50%;
@@ -415,6 +415,78 @@ body {
     @media only screen and (max-width: 500px) {
         .movie-list {
             width: 100%;
+        }
+    }
+}
+
+/* Css DetailMovie */
+
+.detail-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+
+    & .movie-detail {
+        position: relative;
+        width: 750px;
+        height: 500px;
+        margin: 20px;
+        display: flex;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+        padding: 20px;
+        border-radius: 10px;
+
+        & .title-movie-detail {
+            width: 400px;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        & .movie-detail-img {
+            position: absolute;
+            right: 20px;
+            width: 320px;
+            height: 450px;
+            filter: drop-shadow(0 0 0.5rem rgba(30, 30, 30, 0.598));
+            transition: all .5s ease;
+        }
+
+        & .movie-detail-img:hover {
+            transform: scale(1.06);
+        }
+
+        & .detailText {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            text-align: left;
+        }
+
+        & .back-movie-detail {
+            position: absolute;
+            left: 15px;
+            top: 55%;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            background: none;
+
+            & .detail-img {
+                width: 40px;
+                height: 40px;
+                transition: all .5s ease;
+            }
+
+            & .detail-img:hover {
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 0.5rem rgba(30, 30, 30, 0.598));
+            }
         }
     }
 }

@@ -46,6 +46,28 @@
 
     </div>
 
+    <div class="detail-container">
+        
+        <div class="movie-detail">
+            
+            <h1 class="title-movie-detail"><%= movie.Title %></h1>
+            
+            <div class="detailText">
+                <p>Release Date: <%= movie.Release %></p> <br>
+                <p>Genres Title: <%= movie.GenresTitle %></p>
+            </div>
+            
+            <img src="<%= movie.Image %>" alt="<%= movie.Title %>" class="movie-detail-img">
+            
+            <button class="back-movie-detail">
+                <a href="/movies">
+                    <img src="../Icon/back-button.png" alt="" class="detail-img">
+                </a>
+            </button>
+        
+        </div>
+    </div>
+
 </body>
 
 </html>

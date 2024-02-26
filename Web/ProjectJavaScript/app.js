@@ -175,7 +175,34 @@ app.get('/getMoviesByGenre/:genreId', (req, res) => {
             return;
         }
         // Return Data to Json
+        // console.log('Movies from database:', movies);
         res.json(movies);
+    });
+});
+
+app.get('/detailMovie/:movieId', (req, res) => {
+    const movieId = req.params.movieId;
+
+    if (isNaN(movieId)) {
+        res.status(400).send('Invalid movie ID');
+        return;
+    }
+
+    db.get('SELECT * FROM Movies WHERE movieid = ?', [movieId], (err, movie) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        if (!movie) {
+            res.status(404).send('Movie not found');
+            return;
+        }
+
+        res.render('detailMovie.ejs', {
+            movie
+        });
     });
 });
 
