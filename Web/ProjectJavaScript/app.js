@@ -4,7 +4,7 @@ const session = require('express-session');
 const sqlite = require('sqlite3');
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5500;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
@@ -165,10 +165,10 @@ app.get('/movies', (req, res) => {
     });
 });
 
-app.get('/getMoviesByGenre/:genreId', (req, res) => {
-    const genreId = req.params.genreId;
+app.get('/getMoviesByGenre/:genresid', (req, res) => {
+    const genreId = req.params.genresid;
 
-    db.all('SELECT * FROM Movies WHERE GenresID = ?', [genreId], (err, movies) => {
+    db.all('SELECT * FROM Movies WHERE genresid = ?', [genreId], (err, movies) => {
         if (err) {
             console.error(err.message);
             res.status(500).send('Internal Server Error');
